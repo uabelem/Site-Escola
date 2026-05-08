@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E. E. Montalvânia</title>
+    <link rel="shortcut icon" href="img/escolaicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        header {
+            background-color: #135EF2;
+            color: white;
+        }
+
+        #header-interno {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 25px 0px 25px;
+        }
+
+        #logo {
+            border-radius: 50%;
+            width: 70px;
+        }
+
+        #header-interno p {
+            color: #85B7EB;
+            margin: 1vh;
+        }
+
+        #header-interno h1 {
+            margin-bottom: 2px;
+            /* controla o espaço entre nome e subtítulo */
+        }
+
+        nav {
+            background-color: #1374F2;
+            padding: 4px 30px;
+            /* era 0px — dá um respiro mínimo */
+        }
+
+        nav>a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            /* era 30px em todos os lados */
+            padding: 6px 14px;
+            /* reduza também o padding vertical se quiser */
+            border: 2px solid transparent;
+            transition: 0.3s ease;
+            display: inline-block;
+        }
+
+        nav>a:hover {
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.2);
+            /* aumenta 20% sem empurrar nada */
+        }
+
+        nav>a:active {
+            border-color: #85B7EB;
+            color: #85B7EB;
+            transform: scale(1);
+            /* efeito de "clicado" */
+            transition: 0.1s;
+        }
+
+        nav>a.ativo {
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+
+        main {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            align-items: flex-start;
+            max-width: 250vh;
+        }
+
+        #conteudo {
+            flex: 1;
+            /* ocupa o espaço restante */
+            text-align: justify;
+        }
+
+        aside {
+            width: 365px;
+            background-color: #f0f4ff;
+            border-left: 4px solid #135EF2;
+            padding: 16px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            /* não encolhe */
+            margin-top: 10px;
+        }
+
+        .principal {
+            border-left: 4px solid #135EF2;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f0f4ff;
+            margin-top: 10px;
+        }
+
+        #rodade {
+            background-color: #1374F2;
+            margin-bottom: 0px;
+            padding: 10px;
+        }
+
+        footer>p {
+            margin-left: 30px;
+            color: white;
+        }
+
+        .carrossel {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            max-width: 400px;
+            /* mesma largura do aside */
+            margin-top: 20px;
+        }
+
+        .faixa {
+            display: flex;
+            transition: transform 0.8s ease;
+        }
+
+        .faixa img {
+            min-width: 100%;
+            width: 100%;
+            height: 300px;
+            /* reduza a altura também, já que a largura é menor */
+            object-fit: cover;
+            object-position: center;
+        }
+        #divlateral{
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="header-interno">
+            <img id="logo" src="img/logoeemti.png" alt="Logo">
+            <div>
+                <h1>Escola Estadual de Montalvânia</h1>
+                <p>Formando cidadãos, construindo futuros desde 1978</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="ativo">Página inicial</a>
+            <a href="ginasio-news.html">Ginásio News</a>
+            <a href="clubes-escolares.html">Clubes Escolares</a>
+            <a href="https://www.instagram.com/escolamontalvania/" target="_blank">Nosso Instagram</a>
+        </nav>
+    </header>
+    <main>
+        <div id="conteudo">
+            <section class="principal">
+                <h2>
+                    Bem-vindo à nossa escola
+                </h2>
+                <p>
+                    A Escola Estadual de Montalânia é uma instituição pública comprometida com a educação de qualidade.
+                    Oferecemos ensino fundamental e médio, contando com professores dedicados e uma estrutura pensada
+                    para o
+                    aprendizado e o desenvolvimento humano dos nossos alunos.
+                </p>
+            </section>
+            <section class="principal">
+                <h2>
+                    Nossa Missão
+                </h2>
+                <p>
+                    Educar com responsabilidade, promovendo valores, pensamento crítico e cidadania para todos os
+                    estudantes
+                    de Montalânia e região.
+                </p>
+            </section>
+            <section class="principal">
+                <article>
+                    <h2>
+                        Últimas notícias
+                    </h2>
+                    <time datetime="2026-05-05">05 de maio de 2026</time>
+                    <h3>
+                        Feira de ciências 2026 — inscrições abertas
+                    </h3>
+                    <p>
+                        Estão abertas as inscrições para a Feira de Ciências deste ano. Os alunos do 6º ao 3º ano do
+                        ensino
+                        médio podem participar em grupos de até quatro pessoas. Entregue seu projeto até o dia 20 de
+                        maio na
+                        coordenação.
+                    </p>
+                </article>
+            </section>
+        </div>
+        <div id="divlateral">
+            <aside>
+                <h4>
+                    Avisos rápidos
+                </h4>
+                <p>
+                <ul>
+                    <li>Segunda-feira sem aulas — feriado municipal</li>
+                    <li>Uniforme obrigatório a partir de junho</li>
+                    <li>Biblioteca aberta até 17h todos os dias</li>
+                    <li>Matrículas 2027 iniciam em outubro</li>
+                </ul>
+                </p>
+            </aside>
+            <a href="https://www.instagram.com/p/DXVamQiDNWW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+                <div class="carrossel">
+                    <div class="faixa">
+                        <img src="img/fanfarra1.jpg" alt="Foto 1">
+                        <img src="img/fanfarra2.jpg" alt="Foto 2">
+                        <img src="img/fanfarra3.jpg" alt="Foto 3">
+                        <img src="img/fanfarra4.jpg" alt="Foto 4">
+                        <img src="img/fanfarra5.jpg" alt="Foto 5">
+                        <img src="img/fanfarra6.jpg" alt="Foto 6">
+                        <img src="img/fanfarra7.jpg" alt="Foto 7">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+    <footer id="rodade">
+        <p>
+            © 2026 Escola Estadual de Montalânia — Todos os direitos reservados
+        </p>
+    </footer>
+    <script>
+        const faixa = document.querySelector('.faixa');
+        const total = document.querySelectorAll('.faixa img').length;
+        let atual = 0;
+
+        setInterval(() => {
+            atual = (atual + 1) % total;
+            faixa.style.transform = `translateX(-${atual * 100}%)`;
+        }, 3000); // troca a cada 3 segundos
+    </script>
+</body>
+
+</html>
