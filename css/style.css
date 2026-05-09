@@ -14,11 +14,11 @@ header {
     align-items: center;
     gap: 16px;
     padding: 10px 25px 0px 25px;
+    
 }
 
 #logo {
-    border-radius: 50%;
-    width: 70px;
+    width: 100px;
 }
 
 #header-interno p {
@@ -49,6 +49,7 @@ nav {
     border-color: white;
     background-color: rgba(255, 255, 255, 0.1);
     transform: scale(1.3);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285);
 }
 
 .pags:active {
@@ -63,6 +64,7 @@ nav {
     background-color: rgba(255, 255, 255, 0.2);
     pointer-events: none;
     cursor: default;
+    scale: calc(1.1);
 }
 
 .redes {
@@ -81,6 +83,7 @@ nav {
     border-color: white;
     background-color: rgba(255, 255, 255, 0.1);
     transform: scale(1.2);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285);
 }
 
 #rodade {
