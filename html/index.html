@@ -15,96 +15,134 @@
             max-width: 250vh;
         }
 
-        img {
-            width: 100%;
-        }
 
         #painel {
             position: relative;
-            /* Define o contexto para o posicionamento do texto */
-            display: inline-block;
-            /* Opcional: para o contêiner ajustar ao tamanho da imagem */
-            padding: 20px 0px;
+            padding: 20px 0px 0px 0px;
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden;
         }
 
-        #titulo-painel {
+        #painel img {
+            width: 100%;
+            display: block;
+        }
+
+        #painel-texto {
+            padding-top: 20px;
             position: absolute;
-            /* Tira o texto do fluxo normal */
-            bottom: 60%;
-            /* Distância do fundo */
+            top: 10%;
             left: 3%;
-            /* Distância da esquerda */
+            right: 3%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #painel-texto h1 {
             color: black;
-            padding: 10px;
-            font-size: 1.5em;
+            font-size: clamp(1rem, 2.5vw, 5rem);
+            margin: 0;
         }
 
-        #subtitulo-painel {
-            position: absolute;
-            /* Tira o texto do fluxo normal */
-            bottom: 45%;
-            /* Distância do fundo */
-            left: 3%;
-            /* Distância da esquerda */
-            color: rgba(0, 0, 0, 0.256);
-            padding: 10px;
-            font-size: 1em;
-            vertical-align: top;
+        #painel-texto h2 {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: clamp(0.3rem, 2.0vw, 1.5rem);
             font-weight: lighter;
+            margin: 0;
         }
 
-        #painel>button {
+        /* Botão no canto inferior esquerdo do painel */
+        #painel-botao {
             position: absolute;
-            /* Tira o texto do fluxo normal */
-            bottom: 40%;
-            /* Distância do fundo */
-            left: 3.5%;
-            /* Distância da esquerda */
+            bottom: 10%;
+            left: 3%;
+        }
+
+        #painel-botao button {
+            width: fit-content;
             color: white;
             background-color: #1374f2;
             padding: 10px;
-            font-size: 1em;
-            vertical-align: top;
-            font-weight: lighter;
+            font-size: clamp(0.3rem, 1.2vw, 1rem);
             border: none;
             border-radius: 10px;
             transition: 0.3s ease;
+            cursor: pointer;
         }
 
-        #painel>button:hover {
-            transition: 1s;
-            background-color:#1168d9;
+        /*muda o botao de lugar quando a tela é pequena*/
+        @media (max-width: 600px) {
+            #painel-botao {
+                left: auto;
+                right: 3%;
+            }
+        }
+
+        #painel-botao button:hover {
+            background-color: #1168d9;
             transform: scale(1.1);
             box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
         }
 
         #conteudo {
             flex: 1;
-            /* ocupa o espaço restante */
             text-align: justify;
         }
 
-        aside {
-            width: 365px;
-            background-color: #f0f4ff;
-            border-left: 4px solid #135EF2;
-            padding: 16px;
-            border-radius: 8px;
-            flex-shrink: 0;
-            /* não encolhe */
-            margin-top: 10px;
+        #destaques {
+            display: flex;
+            gap: 10px;
+            margin: 0px 20px 10px 20px;
+            flex-wrap: wrap;
         }
 
         .principal {
-            border-left: 4px solid #135EF2;
-            padding: 10px;
+            padding: 16px 16px 0 16px;
             border-radius: 8px;
-            background-color: #f0f4ff;
-            margin-top: 10px;
+            background-color: #FAFAFA;
+            flex: 1;
+            margin: 0 0 10px 0;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.179);
+            position: relative;
+            overflow: hidden;
+            min-height: 175px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        #divlateral {
-            margin-right: 20px;
+        .principal h2 {
+            text-indent: 10px;
+            color: #222;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            margin: 0 0 12px 0;
+            z-index: 1;
+        }
+
+        .principal svg {
+            width: 125px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .principal a {
+            position: absolute;
+            bottom: 12px;
+            right: 20px;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            text-decoration: none;
+            color: #1374f2;
+            transition: 0.5s ease;
+        }
+
+        .principal a:hover {
+            scale: 1.2;
+            text-decoration: underline;
+            color: #0e59bc;
         }
     </style>
 </head>
@@ -147,67 +185,77 @@
     <main>
         <div id="painel">
             <img src="../img/alunos.png" alt="Alunos da nossa escola">
-            <div id="titulo-painel">
+            <div id="painel-texto">
                 <h1>Educação que transforma,<br>futuros que inspiram.</h1>
-            </div>
-            <div id="subtitulo-painel">
                 <h2>A mais de 45 anos formando<br> cidadões com conhecimento,<br> valores e próposito.</h2>
             </div>
-            <button>Conheça nossa escola</button>
+            <div id="painel-botao">
+                <button>Conheça nossa escola</button>
+            </div>
+
         </div>
 
         <div id="conteudo">
-            <section class="principal">
-                <p>
-                    A Escola Estadual de Montalânia é uma instituição pública comprometida com a educação de qualidade.
-                    Oferecemos ensino fundamental e médio, contando com professores dedicados e uma estrutura pensada
-                    para o
-                    aprendizado e o desenvolvimento humano dos nossos alunos.
-                </p>
-            </section>
-            <section class="principal">
-                <h2>
-                    Nossa Missão
-                </h2>
-                <p>
-                    Educar com responsabilidade, promovendo valores, pensamento crítico e cidadania para todos os
-                    estudantes
-                    de Montalânia e região.
-                </p>
-            </section>
-            <section class="principal">
-                <article>
+            <div id="destaques">
+                <section class="principal">
                     <h2>
-                        Últimas notícias
+                        JEMG 2026
                     </h2>
-                    <time datetime="2026-05-05">05 de maio de 2026</time>
-                    <h3>
-                        Feira de ciências 2026 — inscrições abertas
-                    </h3>
-                    <p>
-                        Estão abertas as inscrições para a Feira de Ciências deste ano. Os alunos do 6º ao 3º ano do
-                        ensino
-                        médio podem participar em grupos de até quatro pessoas. Entregue seu projeto até o dia 20 de
-                        maio na
-                        coordenação.
-                    </p>
-                </article>
-            </section>
-        </div>
-        <div id="divlateral">
-            <aside>
-                <h4>
-                    Avisos rápidos
-                </h4>
-                <p>
-                <ul>
-                    <li>Segunda-feira sem aulas — feriado municipal</li>
-                    <li>Uniforme obrigatório a partir de junho</li>
-                    <li>Biblioteca aberta até 17h todos os dias</li>
-                    <li>Matrículas 2027 iniciam em outubro</li>
-                </ul>
-                </p>
-            </aside>
+                    <svg fill="#1374f2" width="150px" height="150px" viewBox="-2.4 -2.4 28.80 28.80" id="Layer_1"
+                        data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" stroke="#1374f2"
+                        stroke-width="0.00024000000000000003" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="0.144"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M20.506,20.454a11.975,11.975,0,0,0,0-16.908c-.009-.01-.011-.022-.021-.031s-.021-.012-.031-.021a11.975,11.975,0,0,0-16.907,0c-.01.009-.023.012-.032.022s-.013.022-.022.032a11.975,11.975,0,0,0,0,16.906c.009.01.012.023.022.032s.022.013.032.022a11.975,11.975,0,0,0,16.907,0c.01-.009.022-.011.031-.021S20.5,20.464,20.506,20.454Zm-18.449-7.4a9.927,9.927,0,0,1,5.275,2.2l-3.07,3.07A9.951,9.951,0,0,1,2.057,13.058Zm2.2-7.382L10.586,12,8.749,13.837a11.921,11.921,0,0,0-6.7-2.784A9.956,9.956,0,0,1,4.262,5.676Zm17.681,5.266a9.935,9.935,0,0,1-5.275-2.2l3.07-3.07A9.951,9.951,0,0,1,21.943,10.942Zm-6.689-3.61a9.927,9.927,0,0,1-2.2-5.275,9.951,9.951,0,0,1,5.266,2.2ZM13.836,8.75,12,10.586,5.676,4.262a9.956,9.956,0,0,1,5.377-2.214A11.933,11.933,0,0,0,13.836,8.75Zm-5.09,7.918a9.927,9.927,0,0,1,2.2,5.275,9.951,9.951,0,0,1-5.266-2.205Zm1.417-1.417L12,13.414l6.324,6.324a9.948,9.948,0,0,1-5.377,2.214A11.921,11.921,0,0,0,10.163,15.251ZM13.414,12l1.836-1.836a11.933,11.933,0,0,0,6.7,2.783,9.956,9.956,0,0,1-2.214,5.377Z">
+                            </path>
+                        </g>
+                    </svg>
+                    <a href="#">Saiba Mais &rarr;</a>
+                </section>
+                <section class="principal">
+                    <h2>
+                        Primeiro séminario
+                    </h2>
+                    <svg width="150px" height="150px" viewBox="0 0 24.00 24.00" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" stroke="#1374f2" transform="rotate(0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="1.152"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M7 8L3 12L7 16" stroke="#1374f2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M17 8L21 12L17 16" stroke="#1374f2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M14 4L9.8589 19.4548" stroke="#1374f2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <a href="#">Saiba Mais &rarr;</a>
+                </section>
+                <section class="principal">
+                    <article>
+                        <h2>
+                            Desfile
+                        </h2>
+                        <svg width="150px" height="150px" viewBox="0 0 24.00 24.00" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" stroke="#1374f2">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
+                                stroke="#1374f2" stroke-width="0.672"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M21 10C21 12.2091 16.9706 14 12 14M21 10C21 7.79086 16.9706 6 12 6C7.02944 6 3 7.79086 3 10M21 10V16C21 18.2091 16.9706 20 12 20M12 14C7.02944 14 3 12.2091 3 10M12 14V20M3 10V16C3 18.2091 7.02944 20 12 20M7 19.3264V13.3264M17 19.3264V13.3264M12 10L20 4"
+                                    stroke="#1374f2" stroke-width="1.848" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </g>
+                        </svg>
+                        <a href="#">Saiba Mais &rarr;</a>
+                    </article>
+                </section>
+            </div>
         </div>
     </main>
     <footer id="rodade">
