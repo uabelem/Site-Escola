@@ -8,6 +8,67 @@ header {
     color: white;
 }
 
+.buttonHAM{
+    height: 40px;
+    width: 40px;
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 5px;
+    background-color: #135EF2;
+    border: none;
+}
+
+.hamburguer-nav{
+    position: absolute;
+    right: 0;
+    top: 55px;
+    width: 170px;
+    height: auto;
+    display: grid;
+    background-color: #1374F2;
+    z-index: 1;
+    padding: 5px 10px 5px 12px;
+    border-radius: 10px 0 0 10px;
+    line-height: 30px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.pagsHAM{
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+    border-radius: 10px 0 0 10px;
+}
+
+.pagsHAM:hover{
+    scale: 1.1;
+    background-color: #3584eb;
+    padding-left: 10px;
+    border: 2px solid white;
+
+}
+
+.hamburguer-nav>div{
+    display: grid;
+}
+
+@media (max-width: 1144px){
+    .buttonHAM{
+        display: flex;
+    }
+
+    .navPC{
+        display: none;
+    }
+
+    .hamburguer-nav{
+        display: none;
+    }
+}
+
 #header-interno {
     display: flex;
     align-items: center;
@@ -17,7 +78,7 @@ header {
 }
 
 #logo {
-    width: 100px;
+    width: clamp(30px, 80px, 120px)
 }
 
 #header-interno p {
@@ -29,7 +90,9 @@ header {
     margin-bottom: 2px;
 }
 
-nav {
+
+
+.navPC {
     background-color: #1374F2;
     padding: 4px 30px;
 }
