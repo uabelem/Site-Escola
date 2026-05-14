@@ -29,11 +29,17 @@ buttonHAM.addEventListener("click", (event) => {
     }
 })
 
+const Logoheader = document.querySelector("#logo")
+
 window.addEventListener("resize", () => {
     if (window.innerWidth > 1051) {
+        Logoheader.src = "../img/eemtv.png"
         hamburguerNAV.style.right = "-200px";
         setTimeout(() => {
             hamburguerNAV.style.display = "none";
         }, 500);
+    } else if (window.innerWidth < 1051){
+        Logoheader.src = "../img/eemtv-small.png"
     }
 });
+    

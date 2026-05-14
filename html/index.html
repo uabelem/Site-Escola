@@ -88,13 +88,18 @@
             border-radius: 10px;
             transition: 0.3s ease;
             cursor: pointer;
+
         }
 
         /*muda o botao de lugar quando a tela é pequena*/
         @media (max-width: 600px) {
             #painel-botao {
-                left: auto;
-                right: 3%;
+                display: none
+            }
+
+            #painel{
+                text-align: center;
+                z-index: 0;
             }
         }
 
@@ -116,6 +121,13 @@
             flex-wrap: wrap;
         }
 
+        @media(max-width: 1051px) {
+            #destaques {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
         .principal {
             padding: 16px 16px 0 16px;
             border-radius: 8px;
@@ -134,7 +146,6 @@
         }
 
         .principal h2 {
-            text-indent: 10px;
             color: #222;
             font-size: clamp(0.8rem, 2vw, 1.2rem);
             margin: 0 0 12px 0;
@@ -335,8 +346,8 @@
         <div id="painel">
         <div id="painel-img"><img src="../img/alunoginatr.png" alt="Alunos da nossa escola"></div>
             <div id="painel-texto">
-                <h1>Educação que transforma,<br>futuros que inspiram.</h1>
-                <h2>A mais de 45 anos formando<br> cidadões com conhecimento,<br> valores e próposito.</h2>
+                <h1>Educação que transforma,futuros que inspiram.</h1>
+                <h2>A mais de 45 anos formando cidadões com conhecimento, valores e próposito.</h2>
             </div>
             <div id="painel-botao">
                 <button>Conheça nossa escola</button>
@@ -407,11 +418,11 @@
             </div>
         </div>
     </main>
-    <footer id="rodade">
+    <div id="rodade">
         <p>
             © 2026 Escola Estadual de Montalânia — Todos os direitos reservados
         </p>
-    </footer>
+    </div>
     <script src="../js/index.js"></script>
 </body>
 
