@@ -7,310 +7,31 @@
     <title>E. E. Montalvânia</title>
     <link rel="shortcut icon" href="../img/escolaicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        main {
-            display: grid;
-            gap: 26px;
-            align-items: flex-start;
-            max-width: 250vh;
-            grid-template-rows: auto 1fr auto;
-        }
-
-
-        #painel {
-            position: relative;
-            padding: 0%;
-            display: flex;
-            align-items: flex-start;
-            overflow: hidden;
-        }
-
-        #painel-img {
-            position: relative;
-            width: 100%;
-            display: block;
-        }
-
-        #painel-img img {
-            width: 100%;
-            display: block;
-        }
-
-        #painel-img::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-
-        #painel-texto {
-            padding-top: 20px;
-            position: absolute;
-            top: 10%;
-            left: 3%;
-            right: 3%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1;
-        }
-
-        #painel-texto h1 {
-            color: black;
-            font-size: clamp(1rem, 2.5vw, 5rem);
-            margin: 0;
-            z-index: 1;
-        }
-
-        #painel-texto h2 {
-            color: rgba(0, 0, 0, 0.4);
-            font-size: clamp(0.3rem, 2.0vw, 1.5rem);
-            font-weight: lighter;
-            margin: 0;
-            z-index: 1;
-        }
-
-
-        /* Botão no canto inferior esquerdo do painel */
-        #painel-botao {
-            position: absolute;
-            bottom: 10%;
-            left: 3%;
-        }
-
-        #painel-botao button {
-            width: fit-content;
-            color: white;
-            background-color: #1374f2;
-            padding: 10px;
-            font-size: clamp(0.3rem, 1.2vw, 1rem);
-            border: none;
-            border-radius: 10px;
-            transition: 0.3s ease;
-            cursor: pointer;
-
-        }
-
-        /*muda o botao de lugar quando a tela é pequena*/
-        @media (max-width: 600px) {
-            #painel-botao {
-                display: none
-            }
-
-            #painel{
-                text-align: center;
-                z-index: 0;
-            }
-        }
-
-        #painel-botao button:hover {
-            background-color: #1168d9;
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
-        }
-
-        #conteudo {
-            flex: 1;
-            text-align: justify;
-        }
-
-        #destaques {
-            display: flex;
-            gap: 10px;
-            margin: 0px 20px 10px 20px;
-            flex-wrap: wrap;
-        }
-
-        @media(max-width: 1051px) {
-            #destaques {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-
-        .principal {
-            padding: 16px 16px 0 16px;
-            border-radius: 8px;
-            background-color: #FAFAFA;
-            flex: 1;
-            margin: 0 0 10px 0;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.179);
-            position: relative;
-            overflow: hidden;
-            min-height: 175px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            transition: 0.5s ease;
-            bottom: 30px;
-        }
-
-        .principal h2 {
-            color: #222;
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            margin: 0 0 12px 0;
-            z-index: 1;
-        }
-
-        .principal svg {
-            width: 125px;
-            height: 125px;
-            object-fit: cover;
-            border-radius: 6px;
-            display: block;
-        }
-
-        .principal a {
-            position: absolute;
-            bottom: 12px;
-            right: 20px;
-            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-            text-decoration: none;
-            color: #1374f2;
-            transition: 0.5s ease;
-        }
-
-        .principal a:hover {
-            scale: 1.2;
-            text-decoration: underline;
-            color: #0e59bc;
-        }
-
-        .principal:hover {
-            background-color: #f2f2f2;
-            scale: 1.05;
-            bottom: 50px;
-            z-index: 3;
-        }
-
-        #sect-semi:hover #semi {
-            animation: shake 0.5s ease-in-out;
-        }
-
-        @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            20% {
-                transform: translateX(-8px);
-            }
-
-            40% {
-                transform: translateX(8px);
-            }
-
-            60% {
-                transform: translateX(-5px);
-            }
-
-            80% {
-                transform: translateX(5px);
-            }
-        }
-
-        @keyframes shakeup {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            20% {
-                transform: translateY(-8px);
-            }
-
-            40% {
-                transform: translateY(8px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-
-            80% {
-                transform: translateY(5px);
-            }
-        }
-
-        @keyframes shakeY {
-            0% {
-                rotate: -10deg;
-            }
-
-            20% {
-                rotate: 10deg;
-            }
-
-            40% {
-                rotate: -10deg;
-            }
-
-            60% {
-                rotate: 10deg;
-            }
-
-            80% {
-                rotate: -10deg;
-            }
-
-            100% {
-                rotate: none;
-            }
-        }
-
-        @keyframes rodar {
-            from {
-                rotate: 0deg;
-            }
-
-            to {
-                rotate: 180deg;
-            }
-        }
-
-        #caixa {
-            transition: 1s ease;
-        }
-
-        #sect-caixa:hover #caixa {
-            animation: shakeY 0.7s ease-in-out;
-        }
-
-        #sect-ball:hover #ball {
-            animation: rodar 0.7s ease-in-out;
-        }
-    </style>
 </head>
 
 <body>
-    <button class="buttonHAM">
-        <svg width="64px" height="64px" viewBox="0 -3.5 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-            fill="#ff0a0a" stroke="#ff0a0a">
-
-            <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-
-            <g id="SVGRepo_iconCarrier">
-                <title>bullet-list</title>
-                <desc>Created with Sketch Beta.</desc>
-                <defs> </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                    <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-571.000000, -210.000000)"
-                        fill="#ffffff">
-                        <path
-                            d="M598,227 L582,227 C580.896,227 580,227.896 580,229 C580,230.104 580.896,231 582,231 L598,231 C599.104,231 600,230.104 600,229 C600,227.896 599.104,227 598,227 L598,227 Z M598,219 L582,219 C580.896,219 580,219.896 580,221 C580,222.104 580.896,223 582,223 L598,223 C599.104,223 600,222.104 600,221 C600,219.896 599.104,219 598,219 L598,219 Z M582,215 L598,215 C599.104,215 600,214.104 600,213 C600,211.896 599.104,211 598,211 L582,211 C580.896,211 580,211.896 580,213 C580,214.104 580.896,215 582,215 L582,215 Z M574,226 C572.343,226 571,227.343 571,229 C571,230.657 572.343,232 574,232 C575.657,232 577,230.657 577,229 C577,227.343 575.657,226 574,226 L574,226 Z M574,218 C572.343,218 571,219.343 571,221 C571,222.657 572.343,224 574,224 C575.657,224 577,222.657 577,221 C577,219.343 575.657,218 574,218 L574,218 Z M574,210 C572.343,210 571,211.343 571,213 C571,214.657 572.343,216 574,216 C575.657,216 577,214.657 577,213 C577,211.343 575.657,210 574,210 L574,210 Z"
-                            id="bullet-list" sketch:type="MSShapeGroup"> </path>
-                    </g>
-                </g>
+    <button class="buttonHAM" aria-label="Abrir menu de navegação">
+        <svg width="64px" height="64px" viewBox="0 -3.5 29 29" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="none">
+            <g fill="#ffffff" fill-rule="evenodd">
+                <path d="M598,227 L582,227 C580.896,227 580,227.896 580,229 C580,230.104 580.896,231 582,231
+                         L598,231 C599.104,231 600,230.104 600,229 C600,227.896 599.104,227 598,227 Z
+                         M598,219 L582,219 C580.896,219 580,219.896 580,221 C580,222.104 580.896,223 582,223
+                         L598,223 C599.104,223 600,222.104 600,221 C600,219.896 599.104,219 598,219 Z
+                         M582,215 L598,215 C599.104,215 600,214.104 600,213 C600,211.896 599.104,211 598,211
+                         L582,211 C580.896,211 580,211.896 580,213 C580,214.104 580.896,215 582,215 Z
+                         M574,226 C572.343,226 571,227.343 571,229 C571,230.657 572.343,232 574,232
+                         C575.657,232 577,230.657 577,229 C577,227.343 575.657,226 574,226 Z
+                         M574,218 C572.343,218 571,219.343 571,221 C571,222.657 572.343,224 574,224
+                         C575.657,224 577,222.657 577,221 C577,219.343 575.657,218 574,218 Z
+                         M574,210 C572.343,210 571,211.343 571,213 C571,214.657 572.343,216 574,216
+                         C575.657,216 577,214.657 577,213 C577,211.343 575.657,210 574,210 Z"
+                    transform="translate(-571, -210)"/>
             </g>
+        </svg>
+    </button>
 
-        </svg></button>
-    <nav class="hamburguer-nav">
+    <nav class="hamburguer-nav" aria-label="Menu mobile">
         <div>
             <a class="pagsHAM" href="index.html" id="ativoHAM">Página inicial</a>
             <a class="pagsHAM" href="noti.html">Notícias</a>
@@ -322,16 +43,17 @@
             <a class="pagsHAM" href="profs.html">Professores</a>
         </div>
     </nav>
+
     <header>
         <div id="header-interno">
-            <img id="logo" src="../img/eemtv.png" alt="Logo">
+            <img id="logo" src="../img/eemtv.png" alt="Logo da Escola Estadual de Montalvânia">
             <div>
                 <h1>Escola Estadual de Montalvânia</h1>
                 <p>Formando cidadãos, construindo futuros desde 1978</p>
             </div>
         </div>
 
-        <nav class="navPC">
+        <nav class="navPC" aria-label="Menu principal">
             <a class="pags" href="index.html" id="ativo">Página inicial</a>
             <a class="pags" href="noti.html">Notícias</a>
             <a class="pags" href="atv.html">Atividades</a>
@@ -342,87 +64,83 @@
             <a class="pags" href="profs.html">Professores</a>
         </nav>
     </header>
+
     <main>
         <div id="painel">
-        <div id="painel-img"><img src="../img/alunoginatr.png" alt="Alunos da nossa escola"></div>
+            <div id="painel-img">
+                <img src="../img/alunoginatr.png" alt="Alunos da nossa escola">
+            </div>
             <div id="painel-texto">
-                <h1>Educação que transforma,futuros que inspiram.</h1>
-                <h2>A mais de 45 anos formando cidadões com conhecimento, valores e próposito.</h2>
+                <h1>Educação que transforma, futuros que inspiram.</h1>
+                <h2>Há mais de 45 anos formando cidadãos com conhecimento, valores e propósito.</h2>
             </div>
             <div id="painel-botao">
                 <button>Conheça nossa escola</button>
             </div>
-
         </div>
 
         <div id="conteudo">
             <div id="destaques">
+
                 <section id="sect-ball" class="principal">
-                    <h2>
-                        JEMG 2026
-                    </h2>
-                    <svg id="ball" fill="#1374f2" width="150px" height="150px" viewBox="-2.4 -2.4 28.80 28.80"
-                        id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" stroke="#1374f2"
-                        stroke-width="0.00024000000000000003" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
-                            stroke-width="0.144"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M20.506,20.454a11.975,11.975,0,0,0,0-16.908c-.009-.01-.011-.022-.021-.031s-.021-.012-.031-.021a11.975,11.975,0,0,0-16.907,0c-.01.009-.023.012-.032.022s-.013.022-.022.032a11.975,11.975,0,0,0,0,16.906c.009.01.012.023.022.032s.022.013.032.022a11.975,11.975,0,0,0,16.907,0c.01-.009.022-.011.031-.021S20.5,20.464,20.506,20.454Zm-18.449-7.4a9.927,9.927,0,0,1,5.275,2.2l-3.07,3.07A9.951,9.951,0,0,1,2.057,13.058Zm2.2-7.382L10.586,12,8.749,13.837a11.921,11.921,0,0,0-6.7-2.784A9.956,9.956,0,0,1,4.262,5.676Zm17.681,5.266a9.935,9.935,0,0,1-5.275-2.2l3.07-3.07A9.951,9.951,0,0,1,21.943,10.942Zm-6.689-3.61a9.927,9.927,0,0,1-2.2-5.275,9.951,9.951,0,0,1,5.266,2.2ZM13.836,8.75,12,10.586,5.676,4.262a9.956,9.956,0,0,1,5.377-2.214A11.933,11.933,0,0,0,13.836,8.75Zm-5.09,7.918a9.927,9.927,0,0,1,2.2,5.275,9.951,9.951,0,0,1-5.266-2.205Zm1.417-1.417L12,13.414l6.324,6.324a9.948,9.948,0,0,1-5.377,2.214A11.921,11.921,0,0,0,10.163,15.251ZM13.414,12l1.836-1.836a11.933,11.933,0,0,0,6.7,2.783,9.956,9.956,0,0,1-2.214,5.377Z">
-                            </path>
-                        </g>
+                    <h2>JEMG 2026</h2>
+                    <svg id="ball" fill="#1374f2" width="150px" height="150px"
+                        viewBox="-2.4 -2.4 28.80 28.80"
+                        xmlns="http://www.w3.org/2000/svg"
+                        stroke="#1374f2" stroke-width="0.024">
+                        <path d="M20.506,20.454a11.975,11.975,0,0,0,0-16.908c-.009-.01-.011-.022-.021-.031
+                                 s-.021-.012-.031-.021a11.975,11.975,0,0,0-16.907,0c-.01.009-.023.012-.032.022
+                                 s-.013.022-.022.032a11.975,11.975,0,0,0,0,16.906c.009.01.012.023.022.032
+                                 s.022.013.032.022a11.975,11.975,0,0,0,16.907,0c.01-.009.022-.011.031-.021
+                                 S20.5,20.464,20.506,20.454Zm-18.449-7.4a9.927,9.927,0,0,1,5.275,2.2l-3.07,3.07
+                                 A9.951,9.951,0,0,1,2.057,13.058Zm2.2-7.382L10.586,12,8.749,13.837
+                                 a11.921,11.921,0,0,0-6.7-2.784A9.956,9.956,0,0,1,4.262,5.676Zm17.681,5.266
+                                 a9.935,9.935,0,0,1-5.275-2.2l3.07-3.07A9.951,9.951,0,0,1,21.943,10.942Z
+                                 m-6.689-3.61a9.927,9.927,0,0,1-2.2-5.275,9.951,9.951,0,0,1,5.266,2.2Z
+                                 M13.836,8.75,12,10.586,5.676,4.262a9.956,9.956,0,0,1,5.377-2.214
+                                 A11.933,11.933,0,0,0,13.836,8.75Zm-5.09,7.918a9.927,9.927,0,0,1,2.2,5.275,
+                                 9.951,9.951,0,0,1-5.266-2.205Zm1.417-1.417L12,13.414l6.324,6.324
+                                 a9.948,9.948,0,0,1-5.377,2.214A11.921,11.921,0,0,0,10.163,15.251Z
+                                 M13.414,12l1.836-1.836a11.933,11.933,0,0,0,6.7,2.783,
+                                 9.956,9.956,0,0,1-2.214,5.377Z"/>
                     </svg>
                     <a href="#">Saiba Mais &rarr;</a>
                 </section>
+
                 <section id="sect-semi" class="principal">
-                    <h2>
-                        Primeiro séminario
-                    </h2>
-                    <svg id="semi" width="150px" height="150px" viewBox="0 0 24.00 24.00" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" stroke="#1374f2" transform="rotate(0)">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
-                            stroke-width="1.152"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path d="M7 8L3 12L7 16" stroke="#1374f2" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                            <path d="M17 8L21 12L17 16" stroke="#1374f2" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                            <path d="M14 4L9.8589 19.4548" stroke="#1374f2" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                        </g>
+                    <h2>Primeiro seminário</h2>
+                    <svg id="semi" width="150px" height="150px" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 8L3 12L7 16"  stroke="#1374f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 8L21 12L17 16" stroke="#1374f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 4L9.8589 19.4548" stroke="#1374f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <a href="#">Saiba Mais &rarr;</a>
                 </section>
+
                 <section id="sect-caixa" class="principal">
-                    <article>
-                        <h2>
-                            Desfile
-                        </h2>
-                        <svg id="caixa" width="150px" height="150px" viewBox="0 0 24.00 24.00" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" stroke="#1374f2">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
-                                stroke="#1374f2" stroke-width="0.672"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <path
-                                    d="M21 10C21 12.2091 16.9706 14 12 14M21 10C21 7.79086 16.9706 6 12 6C7.02944 6 3 7.79086 3 10M21 10V16C21 18.2091 16.9706 20 12 20M12 14C7.02944 14 3 12.2091 3 10M12 14V20M3 10V16C3 18.2091 7.02944 20 12 20M7 19.3264V13.3264M17 19.3264V13.3264M12 10L20 4"
-                                    stroke="#1374f2" stroke-width="1.848" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </g>
-                        </svg>
-                        <a href="#">Saiba Mais &rarr;</a>
-                    </article>
+                    <h2>Desfile</h2>
+                    <svg id="caixa" width="150px" height="150px" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 10C21 12.2091 16.9706 14 12 14M21 10C21 7.79086 16.9706 6 12 6
+                                 C7.02944 6 3 7.79086 3 10M21 10V16C21 18.2091 16.9706 20 12 20
+                                 M12 14C7.02944 14 3 12.2091 3 10M12 14V20
+                                 M3 10V16C3 18.2091 7.02944 20 12 20
+                                 M7 19.3264V13.3264M17 19.3264V13.3264M12 10L20 4"
+                            stroke="#1374f2" stroke-width="1.848"
+                            stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href="#">Saiba Mais &rarr;</a>
                 </section>
+
             </div>
         </div>
     </main>
-    <div id="rodade">
-        <p>
-            © 2026 Escola Estadual de Montalânia — Todos os direitos reservados
-        </p>
+
+    <div id="rodape">
+        <p>© 2026 Escola Estadual de Montalvânia — Todos os direitos reservados</p>
     </div>
+
     <script src="../js/index.js"></script>
 </body>
 

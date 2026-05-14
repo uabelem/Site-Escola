@@ -1,135 +1,64 @@
-body {
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E BODY
+   ========================================= */
+   body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background:linear-gradient(to right, rgb(255, 255, 255), transparent),
-    linear-gradient(to top, rgb(255, 255, 255), transparent), url(../img/alunoginafull.png);
-    background-position-x: center;
-    background-position-y:50% ;
+    background:
+        linear-gradient(to right, rgb(255, 255, 255), transparent),
+        linear-gradient(to top, rgb(255, 255, 255), transparent),
+        url(../img/alunoginafull.png);
+    background-position: center 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 1;
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
 }
 
+/* =========================================
+   2. CABEÇALHO (HEADER) E LOGO
+   ========================================= */
 header {
     background-color: #135EF2;
     color: white;
     padding-top: 10px;
 }
 
-@media (max-width: 500px) {
-    #header-interno {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        
-    }
-    #logo {
-        padding-top: 20px;
-    }
-}
-
-@media (min-width:500px){
-    #header-interno {
-    padding: 33%;
-    }
-}
-
-.buttonHAM {
-    height: 40px;
-    width: 40px;
-    display: none;
-    position: fixed;
-    right: 20px;
-    background-color: #135EF2;
-    border: none;
-    cursor: pointer;
-}
-
-.hamburguer-nav {
-    position: fixed;
-    right: 0;
-    top: 55px;
-    width: 170px;
-    height: auto;
-    display: grid;
-    background-color: #1374F2;
-    z-index: 4;
-    padding: 5px 10px 5px 12px;
-    border-radius: 10px 0 0 10px;
-    line-height: 30px;
-    transition: all 0.5s ease-in-out;
-
-}
-
-.pagsHAM {
-    color: white;
-    text-decoration: none;
-    border: 2px solid transparent;
-    transition: 0.3s ease;
-    border-radius: 10px 0 0 10px;
-}
-
-.pagsHAM:hover {
-    scale: 1.1;
-    background-color: #3584eb;
-    padding-left: 10px;
-    border: 2px solid white;
-
-}
-
-.hamburguer-nav>div {
-    display: grid;
-}
-
-@media (max-width: 1051px) {
-    .buttonHAM {
-        display: flex;
-    }
-
-    .navPC {
-        display: none;
-    }
-
-    .hamburguer-nav {
-        display: none;
-    }
-}
-
 #header-interno {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 0px 25px 0px 25px;
-    flex-wrap: wrap; /* permite quebrar em telas pequenas */
+    padding: 0 25px;
+    flex-wrap: wrap;
 }
 
 #logo {
-    width: clamp(60px, 80px, 90px); /* diminui com a tela */
+    width: clamp(60px, 80px, 90px);
 }
 
 #header-interno h1 {
-    margin-top: 0%;
-    margin-bottom: 2px;
-    font-size: clamp(1rem, 2.5vw, 2.5rem); /* diminui com a tela */
+    margin: 0 0 2px;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 #header-interno p {
-    margin-top: 0%;
+    margin: 0;
     color: #85B7EB;
-    font-size: clamp(0.7rem, 1.5vw, 1.5rem); /* diminui com a tela */
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
 }
 
+/* =========================================
+   3. NAVEGAÇÃO DESKTOP
+   ========================================= */
 .navPC {
     background-color: #1374F2;
     padding: 4px 30px;
-    position: relative; /* necessário para o z-index funcionar */
+    position: relative;
     z-index: 2;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.377); /* sombra para baixo */
-    clip-path: inset(0px -10px -10px -10px); /* corta sombra de cima, libera os outros lados */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.377);
+    clip-path: inset(0px -10px -10px -10px);
 }
 
 .pags {
@@ -161,7 +90,225 @@ header {
     background-color: rgba(255, 255, 255, 0.2);
     pointer-events: none;
     cursor: default;
-    scale: calc(1.1);
+    scale: 1.1;
+}
+
+/* =========================================
+   4. NAVEGAÇÃO MOBILE (HAMBURGUER)
+   ========================================= */
+.buttonHAM {
+    height: 40px;
+    width: 40px;
+    display: none; /* Exibido via media query */
+    position: fixed;
+    right: 20px;
+    background-color: #135EF2;
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.hamburguer-nav {
+    position: fixed;
+    right: 0;
+    top: 55px;
+    width: 170px;
+    height: auto;
+    display: grid;
+    background-color: #1374F2;
+    z-index: 4;
+    padding: 5px 10px 5px 12px;
+    border-radius: 10px 0 0 10px;
+    line-height: 30px;
+    transition: right 0.5s ease-in-out;
+}
+
+.hamburguer-nav > div {
+    display: grid;
+}
+
+.pagsHAM {
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+    border-radius: 10px 0 0 10px;
+}
+
+.pagsHAM:hover {
+    scale: 1.1;
+    background-color: #3584eb;
+    padding-left: 10px;
+    border: 2px solid white;
+}
+
+/* =========================================
+   5. ESTRUTURA PRINCIPAL (MAIN E PAINEL)
+   ========================================= */
+main {
+    display: grid;
+    gap: 26px;
+    align-items: flex-start;
+    max-width: 250vh;
+    grid-template-rows: auto 1fr auto;
+}
+
+#painel {
+    position: relative;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+#painel-img {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+#painel-img img {
+    width: 100%;
+    display: block;
+}
+
+#painel-texto {
+    padding-top: 20px;
+    position: absolute;
+    top: 10%;
+    left: 3%;
+    right: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1;
+}
+
+#painel-texto h1 {
+    color: black;
+    font-size: clamp(1rem, 2.5vw, 5rem);
+    margin: 0;
+}
+
+#painel-texto h2 {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: clamp(0.3rem, 2vw, 1.5rem);
+    font-weight: lighter;
+    margin: 0;
+}
+
+#painel-botao {
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+}
+
+#painel-botao button {
+    width: fit-content;
+    color: white;
+    background-color: #1374f2;
+    padding: 10px;
+    font-size: clamp(0.3rem, 1.2vw, 1rem);
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+#painel-botao button:hover {
+    background-color: #1168d9;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
+}
+
+/* =========================================
+   6. CONTEÚDO E DESTAQUES (CARDS)
+   ========================================= */
+#conteudo {
+    flex: 1;
+    text-align: justify;
+}
+
+#destaques {
+    display: flex;
+    gap: 10px;
+    margin: 0 20px 10px;
+    flex-wrap: wrap;
+}
+
+.principal {
+    padding: 16px 16px 0;
+    border-radius: 8px;
+    background-color: #FAFAFA;
+    flex: 1;
+    margin: 0 0 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.179);
+    position: relative;
+    overflow: hidden;
+    min-height: 175px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: 0.5s ease;
+    bottom: 30px;
+}
+
+.principal:hover {
+    background-color: #f2f2f2;
+    scale: 1.05;
+    bottom: 50px;
+    z-index: 3;
+}
+
+.principal h2 {
+    color: #222;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    margin: 0 0 12px;
+    z-index: 1;
+}
+
+.principal svg {
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.principal a {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    text-decoration: none;
+    color: #1374f2;
+    transition: 0.5s ease;
+}
+
+.principal a:hover {
+    scale: 1.2;
+    text-decoration: underline;
+    color: #0e59bc;
+}
+
+/* Interações específicas dos cards */
+#caixa { transition: 1s ease; }
+#sect-caixa:hover #caixa { animation: shakeY 0.7s ease-in-out; }
+#sect-semi:hover #semi   { animation: shake 0.5s ease-in-out; }
+#sect-ball:hover #ball   { animation: rodar 0.7s ease-in-out; }
+
+/* =========================================
+   7. RODAPÉ (FOOTER) E REDES SOCIAIS
+   ========================================= */
+#rodape {
+    background-color: #1374F2;
+    padding: 8px;
+    margin-top: auto;
+}
+
+#rodape > p {
+    margin: 0;
+    color: white;
 }
 
 .redes {
@@ -170,7 +317,7 @@ header {
     vertical-align: middle;
     color: white;
     margin: 0;
-    padding: 2px 2px;
+    padding: 2px;
     border: 2px solid transparent;
     transition: 0.3s ease;
     display: inline-block;
@@ -183,14 +330,99 @@ header {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285);
 }
 
-#rodade {
-    background-color: #1374F2;
-    margin-bottom: 0%;
-    padding: 8px;
-    margin-top: auto;
+/* =========================================
+   8. ANIMAÇÕES (KEYFRAMES)
+   ========================================= */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-8px); }
+    40%       { transform: translateX(8px); }
+    60%       { transform: translateX(-5px); }
+    80%       { transform: translateX(5px); }
 }
 
-#rodade>p {
-    margin: 0;
-    color: white;
+@keyframes shakeY {
+    0%   { rotate: -10deg; }
+    20%  { rotate: 10deg; }
+    40%  { rotate: -10deg; }
+    60%  { rotate: 10deg; }
+    80%  { rotate: -10deg; }
+    100% { rotate: 0deg; } /* Corrigido: "none" é inválido */
+}
+
+@keyframes rodar {
+    from { rotate: 0deg; }
+    to   { rotate: 180deg; }
+}
+
+/* =========================================
+   9. MEDIA QUERIES — DESKTOP-FIRST
+   ========================================= */
+
+/* --- Tablets em pé e abaixo (≤1051px) --- */
+@media (max-width: 1051px) {
+    /* Navegação: esconde PC, exibe hamburguer */
+    .navPC     { display: none; }
+    .buttonHAM { display: flex; }
+
+    /* Painel principal */
+    #painel {
+        text-align: center;
+        z-index: 0;
+    }
+
+    #painel-botao { display: none; }
+
+    /* Cards em coluna */
+    #destaques {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* --- Tablets menores / paisagem de celular (≤768px) --- */
+@media (max-width: 768px) {
+    #painel-texto h1 {
+        font-size: clamp(0.9rem, 4vw, 2rem);
+    }
+
+    #painel-texto h2 {
+        font-size: clamp(0.6rem, 3vw, 1rem);
+    }
+
+    .principal {
+        min-height: 150px;
+    }
+}
+
+/* --- Celulares (≤500px) --- */
+@media (max-width: 500px) {
+    #header-interno {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #logo {
+        padding-top: 20px;
+    }
+
+    .hamburguer-nav {
+        top: 100px; /* Evita sobrepor o header empilhado */
+    }
+
+    #destaques {
+        margin: 0 10px 10px;
+    }
+}
+
+/* --- Celulares muito pequenos (≤360px) --- */
+@media (max-width: 360px) {
+    #header-interno h1 {
+        font-size: 0.9rem;
+    }
+
+    #header-interno p {
+        font-size: 0.65rem;
+    }
 }
