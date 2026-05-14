@@ -30,7 +30,7 @@ buttonHAM.addEventListener("click", (event) => {
 })
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth > 1144) {
+    if (window.innerWidth > 1051) {
         hamburguerNAV.style.right = "-200px";
         setTimeout(() => {
             hamburguerNAV.style.display = "none";

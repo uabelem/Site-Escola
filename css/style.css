@@ -1,6 +1,13 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    background:linear-gradient(to right, rgb(255, 255, 255), transparent),
+    linear-gradient(to top, rgb(255, 255, 255), transparent), url(../img/alunoginafull.png);
+    background-position-x: center;
+    background-position-y:50% ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
 }
 
 header {
@@ -8,7 +15,25 @@ header {
     color: white;
 }
 
-.buttonHAM{
+@media (max-width: 500px) {
+    #header-interno {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+    }
+    #logo {
+        padding-top: 20px;
+    }
+}
+
+@media (min-width:500px){
+    #header-interno {
+    padding: 33%;
+    }
+}
+
+.buttonHAM {
     height: 40px;
     width: 40px;
     display: none;
@@ -19,7 +44,7 @@ header {
     border: none;
 }
 
-.hamburguer-nav{
+.hamburguer-nav {
     position: absolute;
     right: 0;
     top: 55px;
@@ -27,7 +52,7 @@ header {
     height: auto;
     display: grid;
     background-color: #1374F2;
-    z-index: 1;
+    z-index: 4;
     padding: 5px 10px 5px 12px;
     border-radius: 10px 0 0 10px;
     line-height: 30px;
@@ -35,7 +60,7 @@ header {
 
 }
 
-.pagsHAM{
+.pagsHAM {
     color: white;
     text-decoration: none;
     border: 2px solid transparent;
@@ -43,7 +68,7 @@ header {
     border-radius: 10px 0 0 10px;
 }
 
-.pagsHAM:hover{
+.pagsHAM:hover {
     scale: 1.1;
     background-color: #3584eb;
     padding-left: 10px;
@@ -51,20 +76,20 @@ header {
 
 }
 
-.hamburguer-nav>div{
+.hamburguer-nav>div {
     display: grid;
 }
 
-@media (max-width: 1144px){
-    .buttonHAM{
+@media (max-width: 1051px) {
+    .buttonHAM {
         display: flex;
     }
 
-    .navPC{
+    .navPC {
         display: none;
     }
 
-    .hamburguer-nav{
+    .hamburguer-nav {
         display: none;
     }
 }
@@ -73,28 +98,33 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 7px 25px 0px 25px;
-    
+    padding: 0px 25px 0px 25px;
+    flex-wrap: wrap; /* permite quebrar em telas pequenas */
 }
 
 #logo {
-    width: clamp(30px, 80px, 120px)
-}
-
-#header-interno p {
-    color: #85B7EB;
-    margin: 1vh;
+    width: clamp(60px, 80px, 90px); /* diminui com a tela */
 }
 
 #header-interno h1 {
+    margin-top: 0%;
     margin-bottom: 2px;
+    font-size: clamp(1rem, 2.5vw, 2.5rem); /* diminui com a tela */
 }
 
-
+#header-interno p {
+    margin-top: 0%;
+    color: #85B7EB;
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem); /* diminui com a tela */
+}
 
 .navPC {
     background-color: #1374F2;
     padding: 4px 30px;
+    position: relative; /* necessário para o z-index funcionar */
+    z-index: 2;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.377); /* sombra para baixo */
+    clip-path: inset(0px -10px -10px -10px); /* corta sombra de cima, libera os outros lados */
 }
 
 .pags {
@@ -150,8 +180,9 @@ header {
 
 #rodade {
     background-color: #1374F2;
-    margin-bottom: 0px;
+    margin-bottom: 0%;
     padding: 8px;
+    bottom: 0;
 }
 
 footer>p {
