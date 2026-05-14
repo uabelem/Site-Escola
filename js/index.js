@@ -47,7 +47,7 @@ buttonHAM.addEventListener("click", () => {
 
 /* Ajusta a logo e fecha o menu ao redimensionar a janela */
 window.addEventListener("resize", () => {
-    if (window.innerWidth >= 1051) {
+    if (window.innerWidth >= 768) {
         logoHeader.src = "../img/eemtv.png";
         fecharMenu();
     } else {
@@ -56,6 +56,22 @@ window.addEventListener("resize", () => {
 });
 
 /* Define a logo correta no carregamento inicial */
-if (window.innerWidth < 1051) {
+if (window.innerWidth < 768) {
     logoHeader.src = "../img/eemtv-small.png";
 }
+
+const switchDark        = document.querySelector("#switch");
+const switchDarkMobile  = document.querySelector("#switch-mobile-input");
+
+function aplicarDark(isDark) {
+    document.body.classList.toggle("dark", isDark);
+    switchDark.checked       = isDark;
+    switchDarkMobile.checked = isDark;
+    localStorage.setItem("dark", isDark);
+}
+
+// Carrega preferência salva
+aplicarDark(localStorage.getItem("dark") === "true");
+
+switchDark.addEventListener("change", () => aplicarDark(switchDark.checked));
+switchDarkMobile.addEventListener("change", () => aplicarDark(switchDarkMobile.checked));

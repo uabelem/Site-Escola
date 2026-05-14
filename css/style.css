@@ -1,3 +1,26 @@
+:root {
+    --bg-card: #FAFAFA;
+    --bg-card-hover: #f2f2f2;
+    --text-card: rgba(0, 0, 0, 0.577);
+    --text-titulo: #222;
+    --gradiente: linear-gradient(to right, rgb(255,255,255), transparent),
+                 linear-gradient(to top, rgb(255,255,255), transparent);
+}
+
+body.dark {
+    --bg-card: #1e1e1e;
+    --bg-card-hover: #2a2a2a;
+    --text-card: rgba(255, 255, 255, 0.7);
+    --text-titulo: #f0f0f0;
+    --gradiente: linear-gradient(to right, rgb(20,20,20), transparent),
+                 linear-gradient(to top, rgb(20,20,20), transparent);
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth
+}
+
 /* =========================================
    1. CONFIGURAÇÕES GERAIS E BODY
    ========================================= */
@@ -5,16 +28,19 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background:
-        linear-gradient(to right, rgb(255, 255, 255), transparent),
-        linear-gradient(to top, rgb(255, 255, 255), transparent),
+        var(--gradiente),
         url(../img/alunoginafull.png);
     background-position: center 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 /* =========================================
@@ -30,7 +56,7 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 0 25px;
+    padding: 0 25px 10px 25px;
     flex-wrap: wrap;
 }
 
@@ -59,6 +85,14 @@ header {
     z-index: 2;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.377);
     clip-path: inset(0px -10px -10px -10px);
+    display: flex;                      /* ← adicione */
+    align-items: center;               /* ← adicione */
+    justify-content: space-between;    /* ← adicione */
+}
+
+.navPC .switch {
+    margin-right: -18px; /* puxa para mais perto da borda direita */
+    flex-shrink: 0;      /* impede o switch de encolher */
 }
 
 .pags {
@@ -87,7 +121,7 @@ header {
 
 #ativo {
     border-color: white;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     pointer-events: none;
     cursor: default;
     scale: 1.1;
@@ -96,18 +130,6 @@ header {
 /* =========================================
    4. NAVEGAÇÃO MOBILE (HAMBURGUER)
    ========================================= */
-.buttonHAM {
-    height: 40px;
-    width: 40px;
-    display: none; /* Exibido via media query */
-    position: fixed;
-    right: 20px;
-    background-color: #135EF2;
-    border: none;
-    cursor: pointer;
-    z-index: 5;
-}
-
 .hamburguer-nav {
     position: fixed;
     right: 0;
@@ -155,6 +177,8 @@ main {
 
 #painel {
     position: relative;
+    z-index: 0;        /* ← adicione */
+    isolation: isolate; /* ← adicione — cria contexto próprio */
     padding: 0;
     display: flex;
     align-items: flex-start;
@@ -186,13 +210,13 @@ main {
 
 #painel-texto h1 {
     color: black;
-    font-size: clamp(1rem, 2.5vw, 5rem);
+    font-size: clamp(0.7rem, 2.5vw, 5rem);
     margin: 0;
 }
 
 #painel-texto h2 {
     color: rgba(0, 0, 0, 0.4);
-    font-size: clamp(0.3rem, 2vw, 1.5rem);
+    font-size: clamp(0.5rem, 2vw, 1.5rem);
     font-weight: lighter;
     margin: 0;
 }
@@ -221,6 +245,58 @@ main {
     box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
 }
 
+.texto-adaptavel {
+    text-align: center;
+}
+
+.quebra-desktop {
+    display: none;
+}
+/* Interações específicas do modo escuro */
+
+body.dark #painel-img img {
+    filter: brightness(0.4);
+}
+
+body.dark #painel-texto h1 {
+    color: #f0f0f0;
+}
+
+body.dark #painel-texto h2 {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/*
+sessão de botoes gerais
+*/
+.buttonHAM {
+    position: fixed;
+    top: 8px;
+    right: 20px;
+    height: 40px;
+    width: 40px;
+    display: none; /* ← escondido por padrão */
+    background-color: #135EF2;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.hamburguer-nav {
+    position: fixed;
+    right: 0;
+    top: 55px;
+    width: 170px;
+    height: auto;
+    display: grid;
+    background-color: #1374F2;
+    z-index: 4;
+    padding: 5px 10px 5px 12px;
+    border-radius: 10px 0 0 10px;
+    line-height: 30px;
+    transition: right 0.5s ease-in-out;
+}
+
 /* =========================================
    6. CONTEÚDO E DESTAQUES (CARDS)
    ========================================= */
@@ -232,36 +308,59 @@ main {
 #destaques {
     display: flex;
     gap: 10px;
-    margin: 0 20px 10px;
+    margin: 0 20px;
     flex-wrap: wrap;
 }
 
 .principal {
-    padding: 16px 16px 0;
+    padding: 16px;
     border-radius: 8px;
-    background-color: #FAFAFA;
+    background-color: var(--bg-card);
     flex: 1;
-    margin: 0 0 10px;
+    margin: 0 10px 0 10px; /* ← para compensar o gap */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.179);
     position: relative;
     overflow: hidden;
     min-height: 175px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;       /* ← era column */
+    flex-wrap: wrap;
     align-items: flex-start;
+    gap: 16px;                 /* ← espaço entre SVG e texto */
     transition: 0.5s ease;
     bottom: 30px;
 }
 
+.principal-icone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 130px;
+}
+
+.principal-icone h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.principal p {
+    flex: 1;
+    min-width: 150px;
+    margin: 0;
+    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    color: var(--text-card);
+}
+
 .principal:hover {
-    background-color: #f2f2f2;
+    background-color: var(--bg-card-hover);
     scale: 1.05;
     bottom: 50px;
     z-index: 3;
 }
 
 .principal h2 {
-    color: #222;
+    color: var(--text-titulo);
     font-size: clamp(0.8rem, 2vw, 1.2rem);
     margin: 0 0 12px;
     z-index: 1;
@@ -291,6 +390,11 @@ main {
     color: #0e59bc;
 }
 
+#sect-ball{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* Interações específicas dos cards */
 #caixa { transition: 1s ease; }
 #sect-caixa:hover #caixa { animation: shakeY 0.7s ease-in-out; }
@@ -302,32 +406,13 @@ main {
    ========================================= */
 #rodape {
     background-color: #1374F2;
-    padding: 8px;
+    padding: 5px;
     margin-top: auto;
 }
 
 #rodape > p {
     margin: 0;
     color: white;
-}
-
-.redes {
-    width: 35px;
-    height: 35px;
-    vertical-align: middle;
-    color: white;
-    margin: 0;
-    padding: 2px;
-    border: 2px solid transparent;
-    transition: 0.3s ease;
-    display: inline-block;
-}
-
-.redes:hover {
-    border-color: white;
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: scale(1.2);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285);
 }
 
 /* =========================================
@@ -359,8 +444,8 @@ main {
    9. MEDIA QUERIES — DESKTOP-FIRST
    ========================================= */
 
-/* --- Tablets em pé e abaixo (≤1051px) --- */
-@media (max-width: 1051px) {
+/* --- Tablets em pé e abaixo (≤1093px) --- */
+@media (max-width: 1093px) {
     /* Navegação: esconde PC, exibe hamburguer */
     .navPC     { display: none; }
     .buttonHAM { display: flex; }
@@ -371,27 +456,12 @@ main {
         z-index: 0;
     }
 
-    #painel-botao { display: none; }
+    #painel-botao { right: 5%; }
 
     /* Cards em coluna */
     #destaques {
         flex-direction: column;
         gap: 20px;
-    }
-}
-
-/* --- Tablets menores / paisagem de celular (≤768px) --- */
-@media (max-width: 768px) {
-    #painel-texto h1 {
-        font-size: clamp(0.9rem, 4vw, 2rem);
-    }
-
-    #painel-texto h2 {
-        font-size: clamp(0.6rem, 3vw, 1rem);
-    }
-
-    .principal {
-        min-height: 150px;
     }
 }
 
@@ -412,7 +482,10 @@ main {
     }
 
     #destaques {
-        margin: 0 10px 10px;
+        margin: 0 10px;
+    }
+    #painel-botao{
+        display: none;
     }
 }
 
@@ -425,4 +498,165 @@ main {
     #header-interno p {
         font-size: 0.65rem;
     }
+}
+
+@media (min-width: 1093px){
+    .texto-adaptavel {
+        text-align: left;
+        white-space: normal;
+    }
+    .quebra-desktop{
+        display: inline;
+    }
+}
+
+#botao-mobile {
+    display: none; /* escondido por padrão no desktop */
+}
+
+@media (max-width: 500px) {
+    #painel-botao {
+        display: none; /* já estava assim */
+    }
+
+    #botao-mobile {
+        display: block;
+        width: calc(100% - 20px);
+        margin: 0 10px 16px;
+        color: white;
+        background-color: #1374f2;
+        padding: 12px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    
+    .principal {
+        min-height: unset; /* ← remove o mínimo fixo */
+    }
+
+    .principal svg {
+        width: 70px;  /* ← era 125px */
+        height: 70px;
+    }
+
+    .principal-icone {
+        min-width: 80px; /* ← era 130px */
+    }
+}
+
+@media (max-width: 1093px) {
+
+    #painel {
+        text-align: center;
+        z-index: 0;
+    }
+
+    #painel-botao { right: 5%; }
+
+    #destaques {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1093px) {
+    .navPC     { display: none; }
+    .buttonHAM { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+#botao-mobile:hover {
+    background-color: #1168d9;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
+}
+
+/* From Uiverse.io by juanpabl0svn */ 
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  cursor: pointer;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  --background: #20262c;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: 0.5s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #ececd9, -4px 1px 4px 0px #dadada;
+  background: var(--background);
+  transition: 0.5s;
+}
+
+.decoration {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 2px;
+  border-radius: 50%;
+  right: 20%;
+  top: 15%;
+  background: #e5f041e6;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s;
+  box-shadow: -7px 10px 0 #e5f041e6, 8px 15px 0 #e5f041e6, -17px 1px 0 #e5f041e6,
+    -20px 10px 0 #e5f041e6, -7px 23px 0 #e5f041e6, -15px 25px 0 #e5f041e6;
+}
+
+input:checked ~ .decoration {
+  transform: translateX(-20px);
+  width: 10px;
+  height: 10px;
+  background: white;
+  box-shadow: -12px 0 0 white, -6px 0 0 1.6px white, 5px 15px 0 1px white,
+    1px 17px 0 white, 10px 17px 0 white;
+}
+
+input:checked + .slider {
+  background-color: #5494de;
+}
+
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #efdf2b, 0 0 10px 0px #efdf2b;
+}
+
+.switch-mobile {
+    margin: 8px auto 4px;
+    display: block;
 }
