@@ -1,0 +1,451 @@
+/* =========================================
+   VARIÁVEIS DE TEMA
+   ========================================= */
+:root {
+    --bg-card: #FAFAFA;
+    --bg-card-hover: #f2f2f2;
+    --text-card: rgba(0, 0, 0, 0.577);
+    --text-titulo: #222;
+    --gradiente: linear-gradient(to right, rgb(255,255,255), transparent),
+                 linear-gradient(to top, rgb(255,255,255), transparent);
+}
+
+body.dark {
+    --bg-card: #1e1e1e;
+    --bg-card-hover: #2a2a2a;
+    --text-card: rgba(255, 255, 255, 0.7);
+    --text-titulo: #f0f0f0;
+    --gradiente: linear-gradient(to right, rgb(20,20,20), transparent),
+                 linear-gradient(to top, rgb(20,20,20), transparent);
+}
+
+/* =========================================
+   BASE
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overscroll-behavior: none;
+    background-color: #1374F2;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background:
+        var(--gradiente);
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none;
+}
+
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+#header-interno {
+    display: flex;
+    background-color: #135EF2;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(8px, 2vw, 16px);
+    color: white;
+    height: clamp(60px, 10vw, 96px);
+    padding-inline: clamp(12px, 3vw, 24px);
+}
+
+#logo {
+    width: clamp(50px, 8vw, 90px);
+    flex-shrink: 0;
+}
+
+#header-interno > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    text-align: right;
+}
+
+#header-interno h1 {
+    margin: 0 0 2px;
+    font-size: clamp(0.85rem, 0.5rem + 2vw, 1.75rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+#header-interno p {
+    margin: 0;
+    color: #85B7EB;
+    font-size: clamp(0.7rem, 0.4rem + 1.2vw, 1.1rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =========================================
+   NAVEGAÇÃO DESKTOP
+   ========================================= */
+.navPC {
+    background-color: #1374F2;
+    display: flex;
+    width: min(1000px, calc(100% - clamp(24px, 5vw, 40px)));
+    height: clamp(40px, 5vw, 50px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    z-index: 10;
+    margin-bottom: -25px;
+    top: 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.pags {
+    color: white;
+    text-decoration: none;
+    margin: 0 clamp(2px, 0.5vw, 6px);
+    padding: clamp(4px, 0.6vw, 6px) clamp(8px, 1.2vw, 14px);
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+    display: inline-block;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+}
+
+.pags:hover {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285);
+    cursor: pointer;
+}
+
+.pags:active {
+    border-color: #85B7EB;
+    color: #85B7EB;
+    transform: scale(1);
+    transition: 0.1s;
+}
+
+#ativo {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    cursor: default;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   SWITCH (TEMA CLARO/ESCURO)
+   ========================================= */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  --background: #1e62d0;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: .5s;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #ffffff;
+  background: var(--background);
+  transition: .5s;
+}
+
+input:checked + .slider {
+  background-color: #0044cc;
+}
+
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #ffffff;
+}
+
+/* =========================================
+   BOTÃO HAMBURGUER
+   ========================================= */
+.buttonHAM {
+    position: absolute;
+    right: clamp(12px, 3vw, 20px);
+    height: 40px;
+    width: 40px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #135EF2;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* =========================================
+   NAVEGAÇÃO MOBILE
+   ========================================= */
+.hamburguer-nav {
+    position: fixed;
+    right: 0;
+    top: clamp(55px, 10vw, 85px);
+    width: clamp(140px, 35vw, 170px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #1374F2;
+    z-index: 100;
+    padding: 8px 0;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.15);
+    transition: right 0.5s ease-in-out;
+}
+
+.hamburguer-nav > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pagsHAM {
+    display: block;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.pagsHAM:last-child {
+    border-bottom: none;
+}
+
+.pagsHAM:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 20px;
+}
+
+#ativoHAM {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    pointer-events: none;
+    padding-left: 16px;
+}
+
+.switch-mobile {
+    margin: 16px auto 8px auto;
+    display: block;
+    transform: scale(0.85);
+}
+
+/* =========================================
+   MAIN — CONTEÚDO PRINCIPAL
+   ========================================= */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#primeira-noti{
+    margin-top: 60px;
+}
+
+.noticia {
+    background-color: var(--bg-card);
+    margin: 1em auto 1em auto;
+    border-radius: 12px;
+    width: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.205);
+    transition: background-color 0.3s ease;
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    max-height: 24.5em;
+}
+
+.noticia>div>img{
+    width: 20em;
+}
+
+
+.artigos {
+    color: var(--text-card);
+    background-color: var(--bg-card);
+    margin: 20px auto;
+    border-radius: 12px;
+    width: min(1000px, calc(100% - 40px));
+    transition: background-color 0.3s ease;
+    max-width: 20em;
+    padding: 1em;
+}
+
+.btn-ver-mais {
+    width: fit-content;
+    color: white;
+    background-color: #1374f2;
+    padding: clamp(8px, 1vw, 10px) clamp(10px, 1.5vw, 16px);
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-ver-mais:hover {
+    background-color: #1168d9;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
+}
+
+/* =========================================
+   RODAPÉ
+   ========================================= */
+#rodape {
+    background-color: #1374F2;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#rodape > p:nth-child(1) {
+    margin: 0;
+    color: white;
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+}
+
+#rodape > p:nth-child(2) {
+    margin: 0;
+    color: white;
+    font-size: clamp(0.70rem, 1.2vw, 0.75rem);
+}
+
+/* =========================================
+   ANIMAÇÕES
+   ========================================= */
+#caixa { transition: 1s ease; }
+#sect-caixa:hover #caixa { animation: shakeY 0.7s ease-in-out; }
+#sect-semi:hover #semi   { animation: shake 0.5s ease-in-out; }
+#sect-ball:hover #ball   { animation: rodar 0.7s ease-in-out; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-8px); }
+    40%       { transform: translateX(8px); }
+    60%       { transform: translateX(-5px); }
+    80%       { transform: translateX(5px); }
+}
+
+@keyframes shakeY {
+    0%   { rotate: -10deg; }
+    20%  { rotate: 10deg; }
+    40%  { rotate: -10deg; }
+    60%  { rotate: 10deg; }
+    80%  { rotate: -10deg; }
+    100% { rotate: 0deg; }
+}
+
+@keyframes rodar {
+    from { rotate: 0deg; }
+    to   { rotate: 180deg; }
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+@media (min-width: 1093px) {
+    .switch:not(.switch-mobile) {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 1092px) {
+    .navPC { display: none; }
+    .buttonHAM { display: flex; }
+
+    #header-interno > div {
+        display: none;
+    }
+
+    .switch:not(.switch-mobile) {
+        display: none !important;
+    }
+
+    main {
+        padding-top: 0;
+    }
+
+    .hamburguer-nav {
+        top: clamp(65px, 11vw, 90px);
+    }
+}
+
+@media (max-width: 768px) {
+    #rodape {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hamburguer-nav { top: clamp(60px, 18vw, 90px); }
+}
+
+@media (max-width: 360px) {
+    #header-interno h1 { font-size: clamp(0.75rem, 4.5vw, 0.9rem); }
+    #header-interno p  { font-size: clamp(0.6rem, 3.5vw, 0.7rem); }
+}
