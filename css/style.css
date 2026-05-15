@@ -22,7 +22,7 @@ body.dark {
 /* =========================================
    BASE
    ========================================= */
-*, *::before, *::after {
+   *, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -30,6 +30,8 @@ html {
     overflow-x: hidden;
     scroll-behavior: smooth;
     max-width: 100%;
+    overscroll-behavior: none; 
+    background-color: #1374F2; 
 }
 
 body {
@@ -44,6 +46,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overscroll-behavior: none; 
 }
 
 /* =========================================
