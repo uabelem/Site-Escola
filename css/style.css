@@ -57,22 +57,23 @@ header {
     align-items: center;
     gap: 16px;
     padding: 0 25px 10px 25px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: right;
 }
 
 #logo {
-    width: clamp(60px, 80px, 90px);
+    width: clamp(70px, 90px, 100px);
 }
 
 #header-interno h1 {
     margin: 0 0 2px;
-    font-size: clamp(1rem, 2.5vw, 2.5rem);
+    font-size: clamp(0.5rem, 1.75vw, 1.75rem);
 }
 
 #header-interno p {
     margin: 0;
     color: #85B7EB;
-    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+    font-size: clamp(0.80rem, 1.40vw, 1.40rem);
 }
 
 /* =========================================
@@ -80,19 +81,18 @@ header {
    ========================================= */
 .navPC {
     background-color: #1374F2;
-    padding: 4px 30px;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.377);
-    clip-path: inset(0px -10px -10px -10px);
-    display: flex;                      /* ← adicione */
-    align-items: center;               /* ← adicione */
-    justify-content: space-between;    /* ← adicione */
-}
-
-.navPC .switch {
-    margin-right: -18px; /* puxa para mais perto da borda direita */
-    flex-shrink: 0;      /* impede o switch de encolher */
+    display: flex;
+    width: 1000px;
+    height: 50px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 40px;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    z-index: 10;
 }
 
 .pags {
@@ -103,13 +103,15 @@ header {
     border: 2px solid transparent;
     transition: 0.3s ease;
     display: inline-block;
+    border-radius: 20px;
 }
 
 .pags:hover {
     border-color: white;
     background-color: rgba(255, 255, 255, 0.1);
-    transform: scale(1.3);
+    transform: scale(1.1);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285);
+    cursor: pointer;
 }
 
 .pags:active {
@@ -197,10 +199,10 @@ main {
 }
 
 #painel-texto {
-    padding-top: 20px;
+    padding-top: 60px;
     position: absolute;
     top: 10%;
-    left: 3%;
+    left: 40px;
     right: 3%;
     display: flex;
     flex-direction: column;
@@ -223,8 +225,8 @@ main {
 
 #painel-botao {
     position: absolute;
-    bottom: 10%;
-    left: 3%;
+    bottom: 12%;
+    left: 40px;
 }
 
 #painel-botao button {
@@ -308,7 +310,7 @@ sessão de botoes gerais
 #destaques {
     display: flex;
     gap: 10px;
-    margin: 0 20px;
+    margin: 0 40px;
     flex-wrap: wrap;
 }
 
@@ -317,7 +319,6 @@ sessão de botoes gerais
     border-radius: 8px;
     background-color: var(--bg-card);
     flex: 1;
-    margin: 0 10px 0 10px; /* ← para compensar o gap */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.179);
     position: relative;
     overflow: hidden;
@@ -350,6 +351,7 @@ sessão de botoes gerais
     margin: 0;
     font-size: clamp(0.75rem, 1.4vw, 0.9rem);
     color: var(--text-card);
+    hyphens: auto;
 }
 
 .principal:hover {
@@ -582,11 +584,14 @@ sessão de botoes gerais
 /* The switch - the box around the slider */
 .switch {
   font-size: 17px;
-  position: relative;
+  position: absolute;
   display: inline-block;
   width: 3.5em;
   height: 2em;
   cursor: pointer;
+  right: 20px;
+  top: 107px;
+  z-index: 10;
 }
 
 /* Hide default HTML checkbox */

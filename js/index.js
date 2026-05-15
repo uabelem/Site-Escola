@@ -46,19 +46,8 @@ buttonHAM.addEventListener("click", () => {
 });
 
 /* Ajusta a logo e fecha o menu ao redimensionar a janela */
-window.addEventListener("resize", () => {
-    if (window.innerWidth >= 768) {
-        logoHeader.src = "../img/eemtv.png";
-        fecharMenu();
-    } else {
-        logoHeader.src = "../img/eemtv-small.png";
-    }
-});
 
 /* Define a logo correta no carregamento inicial */
-if (window.innerWidth < 768) {
-    logoHeader.src = "../img/eemtv-small.png";
-}
 
 const switchDark        = document.querySelector("#switch");
 const switchDarkMobile  = document.querySelector("#switch-mobile-input");
