@@ -1,3 +1,6 @@
+/* =========================================
+   VARIÁVEIS DE TEMA
+   ========================================= */
 :root {
     --bg-card: #FAFAFA;
     --bg-card-hover: #f2f2f2;
@@ -16,15 +19,19 @@ body.dark {
                  linear-gradient(to top, rgb(20,20,20), transparent);
 }
 
-html {
-    overflow-x: hidden;
-    scroll-behavior: smooth
+/* =========================================
+   BASE
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-/* =========================================
-   1. CONFIGURAÇÕES GERAIS E BODY
-   ========================================= */
-   body {
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background:
@@ -36,7 +43,6 @@ html {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
 }
 
 ::-webkit-scrollbar {
@@ -44,66 +50,94 @@ html {
 }
 
 /* =========================================
-   2. CABEÇALHO (HEADER) E LOGO
+   CABEÇALHO
    ========================================= */
-header {
-    background-color: #135EF2;
-    color: white;
-    padding-top: 10px;
-}
-
 #header-interno {
     display: flex;
+    background-color: #135EF2;
     align-items: center;
-    gap: 16px;
-    padding: 0 25px 10px 25px;
     justify-content: space-between;
-    text-align: right;
+    gap: clamp(8px, 2vw, 16px);
+    color: white;
+    /* altura flexível: nunca menos que 60px, ideal 80px, nunca mais que 96px */
+    height: clamp(60px, 10vw, 96px);
+    padding-inline: clamp(12px, 3vw, 24px);
 }
 
 #logo {
-    width: clamp(70px, 90px, 100px);
+    /* largura fluida entre 50px e 90px */
+    width: clamp(50px, 8vw, 90px);
+    flex-shrink: 0;
+}
+
+/* bloco central de texto */
+#header-interno > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* evita texto vazar */
 }
 
 #header-interno h1 {
     margin: 0 0 2px;
-    font-size: clamp(0.5rem, 1.75vw, 1.75rem);
+    /* fluido: 0.85rem em 280px → 1.75rem em 1200px */
+    font-size: clamp(0.85rem, 0.5rem + 2vw, 1.75rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #header-interno p {
     margin: 0;
     color: #85B7EB;
-    font-size: clamp(0.80rem, 1.40vw, 1.40rem);
+    /* fluido: 0.7rem → 1.1rem */
+    font-size: clamp(0.7rem, 0.4rem + 1.2vw, 1.1rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* =========================================
-   3. NAVEGAÇÃO DESKTOP
+   NAVEGAÇÃO DESKTOP
    ========================================= */
 .navPC {
     background-color: #1374F2;
     display: flex;
-    width: 1000px;
-    height: 50px;
-    position: absolute;
-    top: 100px;
+    width: min(1000px, calc(100% - clamp(24px, 5vw, 40px)));
+    height: clamp(40px, 5vw, 50px);
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 40px;
     align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
+    justify-content: center;
+    padding: 0 5px;
     z-index: 10;
+    margin-bottom: -25px;
+    top: 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
 }
 
 .pags {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    padding: 6px 14px;
+    /* margem horizontal menor em telas médias */
+    margin: 0 clamp(2px, 0.5vw, 6px);
+    padding: clamp(4px, 0.6vw, 6px) clamp(8px, 1.2vw, 14px);
     border: 2px solid transparent;
     transition: 0.3s ease;
     display: inline-block;
     border-radius: 20px;
+    white-space: nowrap;
+    /* fonte fluida da nav */
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
 }
 
 .pags:hover {
@@ -126,24 +160,101 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
     pointer-events: none;
     cursor: default;
-    scale: 1.1;
+    transform: scale(1.1);
 }
 
 /* =========================================
-   4. NAVEGAÇÃO MOBILE (HAMBURGUER)
+   SWITCH (TEMA CLARO/ESCURO) — DESKTOP
+   ========================================= */
+/* Container do switch */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Esconde o checkbox padrão */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* O fundo do slider - Usando o azul do site */
+.slider {
+  --background: #1e62d0; /* Azul principal do menu */
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: .5s;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* A "lua/sol" dentro do botão */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  /* Sombra para criar o efeito de lua crescente branca */
+  box-shadow: inset 8px -4px 0px 0px #ffffff; 
+  background: var(--background);
+  transition: .5s;
+}
+
+/* Cor quando ativado (Checked) */
+input:checked + .slider {
+  background-color: #0044cc; /* Azul um pouco mais escuro */
+}
+
+/* Transformação para o Sol quando ativado */
+input:checked + .slider:before {
+  transform: translateX(100%);
+  /* Muda de lua para um sol branco/brilhante */
+  box-shadow: inset 15px -4px 0px 15px #ffffff;
+}
+/* =========================================
+   BOTÃO HAMBURGUER
+   ========================================= */
+.buttonHAM {
+    position: absolute;
+    right: clamp(12px, 3vw, 20px);
+    height: 40px;
+    width: 40px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #135EF2;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* =========================================
+   NAVEGAÇÃO MOBILE
    ========================================= */
 .hamburguer-nav {
     position: fixed;
     right: 0;
-    top: 55px;
-    width: 170px;
+    top: clamp(55px, 10vw, 85px); /* alinha com a altura real do header */
+    width: clamp(140px, 40vw, 170px);
     height: auto;
     display: grid;
     background-color: #1374F2;
-    z-index: 4;
+    z-index: 100;
     padding: 5px 10px 5px 12px;
     border-radius: 10px 0 0 10px;
-    line-height: 30px;
+    line-height: clamp(24px, 4vw, 30px);
     transition: right 0.5s ease-in-out;
 }
 
@@ -157,34 +268,42 @@ header {
     border: 2px solid transparent;
     transition: 0.3s ease;
     border-radius: 10px 0 0 10px;
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    padding: clamp(2px, 0.5vw, 4px) 0;
 }
 
 .pagsHAM:hover {
-    scale: 1.1;
+    transform: scale(1.1);
     background-color: #3584eb;
     padding-left: 10px;
     border: 2px solid white;
 }
 
+#ativoHAM {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: white;
+    pointer-events: none;
+    padding-left: 10px;
+}
+
 /* =========================================
-   5. ESTRUTURA PRINCIPAL (MAIN E PAINEL)
+   MAIN E PAINEL
    ========================================= */
 main {
     display: grid;
-    gap: 26px;
+    gap: clamp(16px, 3vw, 26px);
     align-items: flex-start;
-    max-width: 250vh;
     grid-template-rows: auto 1fr auto;
+    padding-top: 25px;
 }
 
 #painel {
     position: relative;
-    z-index: 0;        /* ← adicione */
-    isolation: isolate; /* ← adicione — cria contexto próprio */
+    z-index: 0;
     padding: 0;
     display: flex;
-    align-items: flex-start;
     overflow: hidden;
+    width: 100%;
 }
 
 #painel-img {
@@ -198,47 +317,56 @@ main {
     display: block;
 }
 
-#painel-texto {
-    padding-top: 60px;
-    position: absolute;
-    top: 10%;
-    left: 40px;
-    right: 3%;
+.painel-texto-button {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: clamp(12px, 2vw, 20px);
+}
+
+#painel-texto {
+    position: absolute;
+    left: clamp(16px, 4vw, 40px);
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vw, 10px);
     z-index: 1;
+    /* largura máxima para o texto não invadir a imagem */
+    max-width: 55%;
 }
 
 #painel-texto h1 {
     color: black;
-    font-size: clamp(0.7rem, 2.5vw, 5rem);
+    font-size: clamp(0.85rem, 2vw, 2.2rem);
     margin: 0;
+    line-height: 1.2;
 }
 
 #painel-texto h2 {
     color: rgba(0, 0, 0, 0.4);
-    font-size: clamp(0.5rem, 2vw, 1.5rem);
+    font-size: clamp(0.7rem, 1.1vw, 1.1rem);
     font-weight: lighter;
     margin: 0;
+    line-height: 1.4;
 }
 
 #painel-botao {
     position: absolute;
-    bottom: 12%;
-    left: 40px;
+    bottom: 7%;
+    left: clamp(16px, 4vw, 40px);
 }
 
 #painel-botao button {
     width: fit-content;
     color: white;
     background-color: #1374f2;
-    padding: 10px;
-    font-size: clamp(0.3rem, 1.2vw, 1rem);
+    padding: clamp(8px, 1vw, 10px) clamp(10px, 1.5vw, 16px);
+    font-size: clamp(0.8rem, 1vw, 1rem);
     border: none;
     border-radius: 10px;
     transition: 0.3s ease;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 #painel-botao button:hover {
@@ -254,53 +382,13 @@ main {
 .quebra-desktop {
     display: none;
 }
-/* Interações específicas do modo escuro */
 
-body.dark #painel-img img {
-    filter: brightness(0.4);
-}
-
-body.dark #painel-texto h1 {
-    color: #f0f0f0;
-}
-
-body.dark #painel-texto h2 {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-/*
-sessão de botoes gerais
-*/
-.buttonHAM {
-    position: fixed;
-    top: 8px;
-    right: 20px;
-    height: 40px;
-    width: 40px;
-    display: none; /* ← escondido por padrão */
-    background-color: #135EF2;
-    border: none;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.hamburguer-nav {
-    position: fixed;
-    right: 0;
-    top: 55px;
-    width: 170px;
-    height: auto;
-    display: grid;
-    background-color: #1374F2;
-    z-index: 4;
-    padding: 5px 10px 5px 12px;
-    border-radius: 10px 0 0 10px;
-    line-height: 30px;
-    transition: right 0.5s ease-in-out;
-}
+body.dark #painel-img img { filter: brightness(0.4); }
+body.dark #painel-texto h1 { color: #f0f0f0; }
+body.dark #painel-texto h2 { color: rgba(255, 255, 255, 0.4); }
 
 /* =========================================
-   6. CONTEÚDO E DESTAQUES (CARDS)
+   CONTEÚDO E CARDS
    ========================================= */
 #conteudo {
     flex: 1;
@@ -309,27 +397,28 @@ sessão de botoes gerais
 
 #destaques {
     display: flex;
-    gap: 10px;
-    margin: 0 40px;
+    gap: clamp(8px, 1.5vw, 10px);
+    margin: 0 clamp(12px, 4vw, 40px);
     flex-wrap: wrap;
 }
 
 .principal {
-    padding: 16px;
+    padding: clamp(12px, 1.5vw, 16px);
     border-radius: 8px;
     background-color: var(--bg-card);
     flex: 1;
+    /* min-width para que não fique apertado antes de empilhar */
+    min-width: clamp(240px, 30%, 400px);
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.179);
     position: relative;
     overflow: hidden;
-    min-height: 175px;
+    min-height: clamp(120px, 15vw, 175px);
     display: flex;
-    flex-direction: row;       /* ← era column */
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 16px;                 /* ← espaço entre SVG e texto */
-    transition: 0.5s ease;
-    bottom: 30px;
+    gap: clamp(10px, 1.5vw, 16px);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .principal-icone {
@@ -337,7 +426,7 @@ sessão de botoes gerais
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    min-width: 130px;
+    min-width: clamp(80px, 12vw, 130px);
 }
 
 .principal-icone h2 {
@@ -347,30 +436,32 @@ sessão de botoes gerais
 
 .principal p {
     flex: 1;
-    min-width: 150px;
+    min-width: clamp(120px, 20vw, 150px);
     margin: 0;
-    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    font-size: clamp(0.72rem, 0.9vw, 0.88rem);
     color: var(--text-card);
     hyphens: auto;
+    line-height: 1.5;
 }
 
 .principal:hover {
     background-color: var(--bg-card-hover);
-    scale: 1.05;
-    bottom: 50px;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.18);
     z-index: 3;
 }
 
 .principal h2 {
     color: var(--text-titulo);
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
-    margin: 0 0 12px;
+    font-size: clamp(0.8rem, 1.1vw, 1.05rem);
+    margin: 0 0 clamp(6px, 1vw, 12px);
     z-index: 1;
 }
 
 .principal svg {
-    width: 125px;
-    height: 125px;
+    /* ícone fluido: menor em telas pequenas */
+    width: clamp(70px, 10vw, 125px);
+    height: clamp(70px, 10vw, 125px);
     object-fit: cover;
     border-radius: 6px;
     display: block;
@@ -378,47 +469,48 @@ sessão de botoes gerais
 
 .principal a {
     position: absolute;
-    bottom: 12px;
-    right: 20px;
-    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    bottom: clamp(8px, 1.2vw, 12px);
+    right: clamp(12px, 2vw, 20px);
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
     text-decoration: none;
     color: #1374f2;
-    transition: 0.5s ease;
+    transition: 0.3s ease;
 }
 
 .principal a:hover {
-    scale: 1.2;
+    transform: scale(1.2);
     text-decoration: underline;
     color: #0e59bc;
 }
 
-#sect-ball{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/* Interações específicas dos cards */
+/* Animações dos ícones nos cards */
 #caixa { transition: 1s ease; }
 #sect-caixa:hover #caixa { animation: shakeY 0.7s ease-in-out; }
 #sect-semi:hover #semi   { animation: shake 0.5s ease-in-out; }
 #sect-ball:hover #ball   { animation: rodar 0.7s ease-in-out; }
 
+/* Botão mobile (oculto por padrão) */
+#botao-mobile {
+    display: none;
+}
+
 /* =========================================
-   7. RODAPÉ (FOOTER) E REDES SOCIAIS
+   RODAPÉ
    ========================================= */
 #rodape {
     background-color: #1374F2;
-    padding: 5px;
+    padding: clamp(4px, 1vw, 8px) clamp(12px, 3vw, 20px);
     margin-top: auto;
 }
 
 #rodape > p {
     margin: 0;
     color: white;
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
 }
 
 /* =========================================
-   8. ANIMAÇÕES (KEYFRAMES)
+   ANIMAÇÕES
    ========================================= */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -434,7 +526,7 @@ sessão de botoes gerais
     40%  { rotate: -10deg; }
     60%  { rotate: 10deg; }
     80%  { rotate: -10deg; }
-    100% { rotate: 0deg; } /* Corrigido: "none" é inválido */
+    100% { rotate: 0deg; }
 }
 
 @keyframes rodar {
@@ -443,225 +535,211 @@ sessão de botoes gerais
 }
 
 /* =========================================
-   9. MEDIA QUERIES — DESKTOP-FIRST
+   MEDIA QUERIES
    ========================================= */
 
-/* --- Tablets em pé e abaixo (≤1093px) --- */
-@media (max-width: 1093px) {
-    /* Navegação: esconde PC, exibe hamburguer */
-    .navPC     { display: none; }
+/* --- Desktop (≥1093px) --- */
+@media (min-width: 1093px) {
+    .texto-adaptavel {
+        text-align: left;
+        white-space: normal;
+    }
+
+    .quebra-desktop {
+        display: inline;
+    }
+
+    .switch:not(.switch-mobile) {
+        display: inline-block;
+    }
+}
+
+/* --- Tablet e mobile (≤1092px) --- */
+@media (max-width: 1092px) {
+    .navPC { display: none; }
     .buttonHAM { display: flex; }
 
-    /* Painel principal */
+    #header-interno > div {
+        display: none;
+    }
+
+    .switch:not(.switch-mobile) {
+        display: none !important;
+    }
+
+    main {
+        padding-top: 0;
+    }
+
     #painel {
         text-align: center;
         z-index: 0;
     }
 
-    #painel-botao { right: 5%; }
-
-    /* Cards em coluna */
-    #destaques {
-        flex-direction: column;
-        gap: 20px;
+    #painel-texto {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        max-width: 100%;
+        width: 100%;
+        align-items: center;
+        padding: clamp(12px, 3vw, 20px);
     }
-}
 
-/* --- Celulares (≤500px) --- */
-@media (max-width: 500px) {
-    #header-interno {
+    .painel-texto-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        justify-content: center;
+        gap: clamp(10px, 2vw, 16px);
+        padding: clamp(12px, 3vw, 20px);
     }
 
-    #logo {
-        padding-top: 20px;
+    #painel-botao {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+    }
+
+    #destaques {
+        flex-direction: column;
+        gap: clamp(12px, 2.5vw, 20px);
+        /* remove min-width dos cards em coluna */
+    }
+
+    /* em coluna, cards ocupam 100% */
+    .principal {
+        min-width: 0;
     }
 
     .hamburguer-nav {
-        top: 100px; /* Evita sobrepor o header empilhado */
+        top: clamp(65px, 11vw, 90px);
+    }
+}
+
+/* --- Tablet médio (601px – 900px) --- */
+@media (min-width: 601px) and (max-width: 900px) {
+    #painel-texto h1 {
+        font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+    }
+
+    #painel-texto h2 {
+        font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+    }
+
+    /* em tablet, cards podem ficar 2 por linha */
+    #destaques {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .principal {
+        min-width: calc(50% - 8px);
+    }
+}
+
+/* --- Mobile (≤500px) --- */
+@media (max-width: 500px) {
+    .hamburguer-nav {
+        top: clamp(60px, 18vw, 90px);
     }
 
     #destaques {
-        margin: 0 10px;
-    }
-    #painel-botao{
-        display: none;
-    }
-}
-
-/* --- Celulares muito pequenos (≤360px) --- */
-@media (max-width: 360px) {
-    #header-interno h1 {
-        font-size: 0.9rem;
+        margin: 0 clamp(8px, 3vw, 10px);
     }
 
-    #header-interno p {
-        font-size: 0.65rem;
+    /* texto do painel menor no mobile */
+    #painel-texto h1 {
+        font-size: clamp(0.75rem, 4vw, 1.1rem);
     }
-}
 
-@media (min-width: 1093px){
-    .texto-adaptavel {
-        text-align: left;
-        white-space: normal;
+    #painel-texto h2 {
+        font-size: clamp(0.65rem, 2.8vw, 0.85rem);
     }
-    .quebra-desktop{
-        display: inline;
-    }
-}
 
-#botao-mobile {
-    display: none; /* escondido por padrão no desktop */
-}
-
-@media (max-width: 500px) {
+    /* Esconde botão do painel, exibe botão mobile */
     #painel-botao {
-        display: none; /* já estava assim */
+        display: none;
     }
 
     #botao-mobile {
         display: block;
-        width: calc(100% - 20px);
-        margin: 0 10px 16px;
+        width: calc(100% - clamp(16px, 5vw, 20px));
+        margin: 0 clamp(8px, 2.5vw, 10px) 16px;
         color: white;
         background-color: #1374f2;
-        padding: 12px;
-        font-size: 1rem;
+        padding: clamp(10px, 3vw, 12px);
+        font-size: clamp(0.9rem, 4vw, 1rem);
         border: none;
         border-radius: 10px;
         cursor: pointer;
         transition: 0.3s ease;
     }
-    
+
+    #botao-mobile:hover {
+        background-color: #1168d9;
+        transform: scale(1.05);
+        box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
+    }
+
     .principal {
-        min-height: unset; /* ← remove o mínimo fixo */
+        min-height: unset;
     }
 
     .principal svg {
-        width: 70px;  /* ← era 125px */
-        height: 70px;
+        width: clamp(55px, 18vw, 70px);
+        height: clamp(55px, 18vw, 70px);
     }
 
     .principal-icone {
-        min-width: 80px; /* ← era 130px */
+        min-width: clamp(65px, 22vw, 80px);
+    }
+
+    .principal p {
+        font-size: clamp(0.68rem, 3vw, 0.8rem);
+    }
+
+    .principal h2 {
+        font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+    }
+
+    .principal a {
+        font-size: clamp(0.68rem, 2.8vw, 0.8rem);
     }
 }
 
-@media (max-width: 1093px) {
-
-    #painel {
-        text-align: center;
-        z-index: 0;
+/* --- Mobile muito pequeno (≤360px) --- */
+@media (max-width: 360px) {
+    #header-interno h1 {
+        font-size: clamp(0.75rem, 4.5vw, 0.9rem);
     }
 
-    #painel-botao { right: 5%; }
-
-    #destaques {
-        flex-direction: column;
-        gap: 20px;
-    }
-}
-
-@media (max-width: 1093px) {
-    .navPC     { display: none; }
-    .buttonHAM { 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    #header-interno p {
+        font-size: clamp(0.6rem, 3.5vw, 0.7rem);
     }
 
-}
+    #painel-texto h1 {
+        font-size: clamp(0.7rem, 4vw, 0.9rem);
+    }
 
-#botao-mobile:hover {
-    background-color: #1168d9;
-    transform: scale(1.05);
-    box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
-}
+    #painel-texto h2 {
+        font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+    }
 
-/* From Uiverse.io by juanpabl0svn */ 
-/* The switch - the box around the slider */
-.switch {
-  font-size: 17px;
-  position: absolute;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
-  cursor: pointer;
-  right: 20px;
-  top: 107px;
-  z-index: 10;
-}
+    .principal svg {
+        width: 50px;
+        height: 50px;
+    }
 
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  --background: #20262c;
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--background);
-  transition: 0.5s;
-  border-radius: 30px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 1.4em;
-  width: 1.4em;
-  border-radius: 50%;
-  left: 10%;
-  bottom: 15%;
-  box-shadow: inset 8px -4px 0px 0px #ececd9, -4px 1px 4px 0px #dadada;
-  background: var(--background);
-  transition: 0.5s;
-}
-
-.decoration {
-  position: absolute;
-  content: "";
-  height: 2px;
-  width: 2px;
-  border-radius: 50%;
-  right: 20%;
-  top: 15%;
-  background: #e5f041e6;
-  backdrop-filter: blur(10px);
-  transition: all 0.5s;
-  box-shadow: -7px 10px 0 #e5f041e6, 8px 15px 0 #e5f041e6, -17px 1px 0 #e5f041e6,
-    -20px 10px 0 #e5f041e6, -7px 23px 0 #e5f041e6, -15px 25px 0 #e5f041e6;
-}
-
-input:checked ~ .decoration {
-  transform: translateX(-20px);
-  width: 10px;
-  height: 10px;
-  background: white;
-  box-shadow: -12px 0 0 white, -6px 0 0 1.6px white, 5px 15px 0 1px white,
-    1px 17px 0 white, 10px 17px 0 white;
-}
-
-input:checked + .slider {
-  background-color: #5494de;
-}
-
-input:checked + .slider:before {
-  transform: translateX(100%);
-  box-shadow: inset 15px -4px 0px 15px #efdf2b, 0 0 10px 0px #efdf2b;
-}
-
-.switch-mobile {
-    margin: 8px auto 4px;
-    display: block;
+    .principal-icone {
+        min-width: 60px;
+    }
 }

@@ -10,26 +10,6 @@
 </head>
 
 <body>
-    <button class="buttonHAM" aria-label="Abrir menu de navegação">
-        <svg width="64px" height="64px" viewBox="0 -3.5 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            fill="none" stroke="none">
-            <g fill="#ffffff" fill-rule="evenodd">
-                <path d="M598,227 L582,227 C580.896,227 580,227.896 580,229 C580,230.104 580.896,231 582,231
-                         L598,231 C599.104,231 600,230.104 600,229 C600,227.896 599.104,227 598,227 Z
-                         M598,219 L582,219 C580.896,219 580,219.896 580,221 C580,222.104 580.896,223 582,223
-                         L598,223 C599.104,223 600,222.104 600,221 C600,219.896 599.104,219 598,219 Z
-                         M582,215 L598,215 C599.104,215 600,214.104 600,213 C600,211.896 599.104,211 598,211
-                         L582,211 C580.896,211 580,211.896 580,213 C580,214.104 580.896,215 582,215 Z
-                         M574,226 C572.343,226 571,227.343 571,229 C571,230.657 572.343,232 574,232
-                         C575.657,232 577,230.657 577,229 C577,227.343 575.657,226 574,226 Z
-                         M574,218 C572.343,218 571,219.343 571,221 C571,222.657 572.343,224 574,224
-                         C575.657,224 577,222.657 577,221 C577,219.343 575.657,218 574,218 Z
-                         M574,210 C572.343,210 571,211.343 571,213 C571,214.657 572.343,216 574,216
-                         C575.657,216 577,214.657 577,213 C577,211.343 575.657,210 574,210 Z"
-                    transform="translate(-571, -210)" />
-            </g>
-        </svg>
-    </button>
     <nav class="hamburguer-nav" aria-label="Menu mobile">
         <div>
             <a class="pagsHAM" href="index.html" id="ativoHAM">Página inicial</a>
@@ -41,10 +21,9 @@
             <a class="pagsHAM" href="html/cursos.html">Cursos</a>
             <a class="pagsHAM" href="html/profs.html">Professores</a>
         </div>
-        <label for="switch" class="switch switch-mobile">
+        <label for="switch-mobile-input" class="switch switch-mobile">
             <input id="switch-mobile-input" type="checkbox" />
             <span class="slider"></span>
-            <span class="decoration"></span>
         </label>
     </nav>
 
@@ -55,7 +34,26 @@
                 <h1>Escola Estadual de Montalvânia</h1>
                 <p>Formando cidadãos, construindo futuros desde 1978</p>
             </div>
-
+            <button class="buttonHAM" aria-label="Abrir menu de navegação">
+                <svg width="64px" height="64px" viewBox="0 -3.5 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" stroke="none">
+                    <g fill="#ffffff" fill-rule="evenodd">
+                        <path d="M598,227 L582,227 C580.896,227 580,227.896 580,229 C580,230.104 580.896,231 582,231
+                                L598,231 C599.104,231 600,230.104 600,229 C600,227.896 599.104,227 598,227 Z
+                                M598,219 L582,219 C580.896,219 580,219.896 580,221 C580,222.104 580.896,223 582,223
+                                L598,223 C599.104,223 600,222.104 600,221 C600,219.896 599.104,219 598,219 Z
+                                M582,215 L598,215 C599.104,215 600,214.104 600,213 C600,211.896 599.104,211 598,211
+                                L582,211 C580.896,211 580,211.896 580,213 C580,214.104 580.896,215 582,215 Z
+                                M574,226 C572.343,226 571,227.343 571,229 C571,230.657 572.343,232 574,232
+                                C575.657,232 577,230.657 577,229 C577,227.343 575.657,226 574,226 Z
+                                M574,218 C572.343,218 571,219.343 571,221 C571,222.657 572.343,224 574,224
+                                C575.657,224 577,222.657 577,221 C577,219.343 575.657,218 574,218 Z
+                                M574,210 C572.343,210 571,211.343 571,213 C571,214.657 572.343,216 574,216
+                                C575.657,216 577,214.657 577,213 C577,211.343 575.657,210 574,210 Z"
+                            transform="translate(-571, -210)" />
+                    </g>
+                </svg>
+            </button>
         </div>
     </header>
     <nav class="navPC" aria-label="Menu principal">
@@ -68,27 +66,28 @@
             <a class="pags" href="html/turmas.html">Turmas</a>
             <a class="pags" href="html/cursos.html">Cursos</a>
             <a class="pags" href="html/profs.html">Professores</a>
+            <label class="switch">
+                <input type="checkbox" id="switch"> <span class="slider"></span>
+            </label>
         </div>
     </nav>
-    
-    <label for="switch" class="switch">
-        <input id="switch" type="checkbox" />
-        <span class="slider"></span>
-        <span class="decoration"></span>
-    </label>
+
     <main>
         <div id="painel">
             <div id="painel-img">
                 <img src="img/alunoginatr.png" alt="Alunos da nossa escola">
             </div>
-            <div id="painel-texto">
-                <h1 class="texto-adaptavel">Educação que transforma,<br class="quebra-desktop"> futuros que inspiram.
-                </h1>
-                <h2 class="texto-adaptavel">Há mais de 45 anos formando<br class="quebra-desktop"> cidadãos com
-                    conhecimento,<br class="quebra-desktop"> valores e propósito.</h2>
-            </div>
-            <div id="painel-botao">
-                <button>Conheça nossa escola</button>
+            <div class="painel-texto-button">
+                <div id="painel-texto">
+                    <h1 class="texto-adaptavel">Educação que transforma,<br class="quebra-desktop"> futuros que
+                        inspiram.
+                    </h1>
+                    <h2 class="texto-adaptavel">Há mais de 45 anos formando<br class="quebra-desktop"> cidadãos com
+                        conhecimento,<br class="quebra-desktop"> valores e propósito.</h2>
+                </div>
+                <div id="painel-botao">
+                    <button>Conheça nossa escola</button>
+                </div>
             </div>
         </div>
 
@@ -161,7 +160,7 @@
         </div>
         <button id="botao-mobile">Conheça nossa escola</button>
     </main>
-    
+
     <div id="rodape">
         <p>© 2026 Escola Estadual de Montalvânia — Todos os direitos reservados</p>
     </div>

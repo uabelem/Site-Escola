@@ -1,11 +1,11 @@
+/* =========================================
+   MENU HAMBURGUER
+   ========================================= */
 const hamburguerNAV = document.querySelector(".hamburguer-nav");
 const buttonHAM      = document.querySelector(".buttonHAM");
-const logoHeader     = document.querySelector("#logo");
 
-// Estado inicial: menu oculto
 hamburguerNAV.style.display = "none";
 
-/* Fecha o menu hamburguer com animação de slide */
 function fecharMenu() {
     hamburguerNAV.style.right = "-200px";
     setTimeout(() => {
@@ -13,11 +13,9 @@ function fecharMenu() {
     }, 500);
 }
 
-/* Abre o menu hamburguer com animação de slide */
 function abrirMenu() {
     hamburguerNAV.style.display = "grid";
     hamburguerNAV.style.right   = "-200px";
-    // Timeout mínimo forçado para garantir o reflow antes da transição CSS
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             hamburguerNAV.style.right = "0";
@@ -25,18 +23,14 @@ function abrirMenu() {
     });
 }
 
-/* Fecha o menu ao clicar fora dele */
 document.addEventListener("click", (event) => {
-    if (
-        hamburguerNAV.style.display !== "none" &&
+    if (hamburguerNAV.style.display !== "none" &&
         !hamburguerNAV.contains(event.target) &&
-        !buttonHAM.contains(event.target)
-    ) {
+        !buttonHAM.contains(event.target)) {
         fecharMenu();
     }
 });
 
-/* Alterna o menu ao clicar no botão hamburguer */
 buttonHAM.addEventListener("click", () => {
     if (hamburguerNAV.style.display !== "none") {
         fecharMenu();
@@ -45,22 +39,42 @@ buttonHAM.addEventListener("click", () => {
     }
 });
 
-/* Ajusta a logo e fecha o menu ao redimensionar a janela */
-
-/* Define a logo correta no carregamento inicial */
-
-const switchDark        = document.querySelector("#switch");
-const switchDarkMobile  = document.querySelector("#switch-mobile-input");
+/* =========================================
+   DARK MODE LOGIC
+   ========================================= */
+const switchDark       = document.querySelector("#switch");
+const switchDarkMobile = document.querySelector("#switch-mobile-input");
 
 function aplicarDark(isDark) {
-    document.body.classList.toggle("dark", isDark);
-    switchDark.checked       = isDark;
-    switchDarkMobile.checked = isDark;
-    localStorage.setItem("dark", isDark);
+    // Aplica a classe no body
+    if (isDark) {
+        document.body.classList.add("dark");
+    } else {
+        document.body.classList.remove("dark");
+    }
+
+    // Sincroniza os dois botões (Desktop e Mobile)
+    if (switchDark) switchDark.checked = isDark;
+    if (switchDarkMobile) switchDarkMobile.checked = isDark;
+
+    // Salva a preferência
+    localStorage.setItem("dark-mode", isDark);
 }
 
-// Carrega preferência salva
-aplicarDark(localStorage.getItem("dark") === "true");
+// Inicialização: Carrega o que está salvo
+const darkSalvo = localStorage.getItem("dark-mode") === "true";
+aplicarDark(darkSalvo);
 
-switchDark.addEventListener("change", () => aplicarDark(switchDark.checked));
-switchDarkMobile.addEventListener("change", () => aplicarDark(switchDarkMobile.checked));
+// Ouvinte do Switch Desktop
+if (switchDark) {
+    switchDark.addEventListener("change", () => {
+        aplicarDark(switchDark.checked);
+    });
+}
+
+// Ouvinte do Switch Mobile
+if (switchDarkMobile) {
+    switchDarkMobile.addEventListener("change", () => {
+        aplicarDark(switchDarkMobile.checked);
+    });
+}
