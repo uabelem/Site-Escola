@@ -29,6 +29,7 @@ body.dark {
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    max-width: 100%;
 }
 
 body {
@@ -686,7 +687,7 @@ body.dark #painel-texto h2 { color: rgba(255, 255, 255, 0.4); }
 
     #botao-mobile:hover {
         background-color: #1168d9;
-        transform: scale(1.05);
+        transform: scale(1.03);
         box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
     }
 
