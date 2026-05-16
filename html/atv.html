@@ -1,14 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página incompleta
-    </title>
+    <title>E. E. Montalvânia</title>
+    <link rel="shortcut icon" href="../img/escolaicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style-atv.css">
 </head>
+
 <body>
-    <h1>Em andamento</h1>
-    <p>para mais informaçoes, entre em contato com @uabelem ou com @dms-macedo<br>Clique abaixo para</p>
-    <a href="../index.html">Voltar para a página inicial</a>
+    <nav class="hamburguer-nav" aria-label="Menu mobile">
+        <div>
+            <a class="pagsHAM" href="../index.html">Página inicial</a>
+            <a class="pagsHAM" href="noti.html">Notícias</a>
+            <a class="pagsHAM" href="atv.html" id="ativoHAM">Clubes</a>
+            <a class="pagsHAM" href="cardp.html">Cardápio</a>
+            <a class="pagsHAM" href="bibli.html">Biblioteca</a>
+            <a class="pagsHAM" href="turmas.html">Turmas</a>
+            <a class="pagsHAM" href="cursos.html">Cursos</a>
+            <a class="pagsHAM" href="profs.html">Professores</a>
+        </div>
+        <label for="switch-mobile-input" class="switch switch-mobile">
+            <input id="switch-mobile-input" type="checkbox" />
+            <span class="slider"></span>
+        </label>
+    </nav>
+
+    <header>
+        <div id="header-interno">
+            <img id="logo" src="../img/eemtv-small.png" alt="Logo da Escola Estadual de Montalvânia">
+            <div>
+                <h1>Escola Estadual de Montalvânia</h1>
+                <p>Formando cidadãos, construindo futuros desde 1978</p>
+            </div>
+            <button class="buttonHAM" aria-label="Abrir menu de navegação">
+                <svg width="64px" height="64px" viewBox="0 -3.5 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" stroke="none">
+                    <g fill="#ffffff" fill-rule="evenodd">
+                        <path d="M598,227 L582,227 C580.896,227 580,227.896 580,229 C580,230.104 580.896,231 582,231
+                                L598,231 C599.104,231 600,230.104 600,229 C600,227.896 599.104,227 598,227 Z
+                                M598,219 L582,219 C580.896,219 580,219.896 580,221 C580,222.104 580.896,223 582,223
+                                L598,223 C599.104,223 600,222.104 600,221 C600,219.896 599.104,219 598,219 Z
+                                M582,215 L598,215 C599.104,215 600,214.104 600,213 C600,211.896 599.104,211 598,211
+                                L582,211 C580.896,211 580,211.896 580,213 C580,214.104 580.896,215 582,215 Z
+                                M574,226 C572.343,226 571,227.343 571,229 C571,230.657 572.343,232 574,232
+                                C575.657,232 577,230.657 577,229 C577,227.343 575.657,226 574,226 Z
+                                M574,218 C572.343,218 571,219.343 571,221 C571,222.657 572.343,224 574,224
+                                C575.657,224 577,222.657 577,221 C577,219.343 575.657,218 574,218 Z
+                                M574,210 C572.343,210 571,211.343 571,213 C571,214.657 572.343,216 574,216
+                                C575.657,216 577,214.657 577,213 C577,211.343 575.657,210 574,210 Z"
+                            transform="translate(-571, -210)" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <nav class="navPC" aria-label="Menu principal">
+        <div class="nav-links">
+            <a class="pags" href="../index.html">Página inicial</a>
+            <a class="pags" href="noti.html">Notícias</a>
+            <a class="pags" href="atv.html" id="ativo">Clubes</a>
+            <a class="pags" href="cardp.html">Cardápio</a>
+            <a class="pags" href="bibli.html">Biblioteca</a>
+            <a class="pags" href="turmas.html">Turmas</a>
+            <a class="pags" href="cursos.html">Cursos</a>
+            <a class="pags" href="profs.html">Professores</a>
+            <label class="switch">
+                <input type="checkbox" id="switch"> <span class="slider"></span>
+            </label>
+        </div>
+    </nav>
+
+    <main>
+        <div class="linha">
+            <article class="club">
+                <div class="svg-club">
+                    <svg width="64px" height="64px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#135EF2" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.192"></g><g id="SVGRepo_iconCarrier"> <path d="M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z" stroke="#135EF2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 16.8V9.2C3 8.0799 3 7.51984 3.21799 7.09202C3.40973 6.71569 3.71569 6.40973 4.09202 6.21799C4.51984 6 5.0799 6 6.2 6H7.25464C7.37758 6 7.43905 6 7.49576 5.9935C7.79166 5.95961 8.05705 5.79559 8.21969 5.54609C8.25086 5.49827 8.27836 5.44328 8.33333 5.33333C8.44329 5.11342 8.49827 5.00346 8.56062 4.90782C8.8859 4.40882 9.41668 4.08078 10.0085 4.01299C10.1219 4 10.2448 4 10.4907 4H13.5093C13.7552 4 13.8781 4 13.9915 4.01299C14.5833 4.08078 15.1141 4.40882 15.4394 4.90782C15.5017 5.00345 15.5567 5.11345 15.6667 5.33333C15.7216 5.44329 15.7491 5.49827 15.7803 5.54609C15.943 5.79559 16.2083 5.95961 16.5042 5.9935C16.561 6 16.6224 6 16.7454 6H17.8C18.9201 6 19.4802 6 19.908 6.21799C20.2843 6.40973 20.5903 6.71569 20.782 7.09202C21 7.51984 21 8.0799 21 9.2V16.8C21 17.9201 21 18.4802 20.782 18.908C20.5903 19.2843 20.2843 19.5903 19.908 19.782C19.4802 20 18.9201 20 17.8 20H6.2C5.0799 20 4.51984 20 4.09202 19.782C3.71569 19.5903 3.40973 19.2843 3.21799 18.908C3 18.4802 3 17.9201 3 16.8Z" stroke="#135EF2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <div class="info-club">
+                    <h2>Clube de Mídia</h2>
+                    <p>Clube dedicado à produção e consumo de mídia, incluindo jornalismo, televisão e cinema.</p>
+                    <button type="button" class="btn-interesse">Estou interessado</button>
+                </div>
+            </article>
+            <article class="club">
+                <div class="svg-club">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#135ef2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 19C9 20.1046 7.65685 21 6 21C4.34315 21 3 20.1046 3 19C3 17.8954 4.34315 17 6 17C7.65685 17 9 17.8954 9 19ZM9 19V5L21 3V17M21 17C21 18.1046 19.6569 19 18 19C16.3431 19 15 18.1046 15 17C15 15.8954 16.3431 15 18 15C19.6569 15 21 15.8954 21 17ZM9 9L21 7" stroke="#135ef2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <div class="info-club">
+                    <h2>Clube de Música</h2>
+                    <p>Clube para amantes da música, com atividades de composição, interpretação e performance.</p>
+                    <button type="button" class="btn-interesse">Estou interessado</button>
+                </div>
+            </article>
+            <article class="club">
+                <div class="svg-club">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#135ef2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20" stroke="#135ef2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <div class="info-club">
+                    <h2>Clube do Livro</h2>
+                    <p>Clube de leitura e discussão de livros, promovendo o hábito da leitura e a troca de ideias entre os participantes.</p>
+                    <button type="button" class="btn-interesse">Estou interessado</button>
+                </div>
+            </article>
+        </div>
+        <div class="linha">
+            <article class="club">
+                <div class="svg-club">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#135ef2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#135ef2" stroke-width="1.8" stroke-linejoin="round"></path> </g></svg>
+                </div>
+                <div class="info-club">
+                    <h2>Clube de Protagonismo</h2>
+                    <p>Clube voltado para o desenvolvimento de habilidades de liderança, comunicação e protagonismo juvenil.</p>
+                    <button type="button" class="btn-interesse">Estou interessado</button>
+                </div>
+            </article>
+            <article class="club">
+                <div class="svg-club">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#135ef2" stroke="#135ef2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.cls-1{fill:none;stroke:#135ef2;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8;}</style> </defs> <g id="ic-sport-soccer-field"> <rect class="cls-1" x="2" y="5" width="20" height="14" rx="0.2"></rect> <line class="cls-1" x1="12" y1="5" x2="12" y2="19"></line> <circle class="cls-1" cx="12" cy="12" r="3"></circle> <path class="cls-1" d="M2,9H4.8a.2.2,0,0,1,.2.2v5.6a.2.2,0,0,1-.2.2H2"></path> <path class="cls-1" d="M22,15H19.2a.2.2,0,0,1-.2-.2V9.2a.2.2,0,0,1,.2-.2H22"></path> </g> </g></svg>
+                </div>
+                <div class="info-club">
+                    <h2>Clubes de Esportes</h2>
+                    <p>Clube para os amantes de esportes, com atividades de futebol, vôlei, basquete e outras modalidades esportivas.</p>
+                    <button type="button" class="btn-interesse">Estou interessado</button>
+                </div>
+            </article>
+            <article class="club">
+                <div class="svg-club">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#135ef2" stroke-width="0.312"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 6C2 4.34315 3.34315 3 5 3H19C20.6569 3 22 4.34315 22 6V15C22 16.6569 20.6569 18 19 18H13V19H15C15.5523 19 16 19.4477 16 20C16 20.5523 15.5523 21 15 21H9C8.44772 21 8 20.5523 8 20C8 19.4477 8.44772 19 9 19H11V18H5C3.34315 18 2 16.6569 2 15V6ZM5 5C4.44772 5 4 5.44772 4 6V15C4 15.5523 4.44772 16 5 16H19C19.5523 16 20 15.5523 20 15V6C20 5.44772 19.5523 5 19 5H5Z" fill="#135ef2"></path> </g></svg>
+                </div>
+                <div class="info-club">
+                    <h2>Clube de Infómatica</h2>
+                    <p>Clube para os entusiastas de tecnologia, com atividades de programação, robótica e desenvolvimento de projetos tecnológicos.</p>
+                    <button type="button" class="btn-interesse">Estou interessado</button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <div id="rodape">
+        <p>© 2026 Escola Estadual de Montalvânia — Todos os direitos reservados</p>
+        <p>Por: Gabriel Belém & Davi Macedo - 2º A1</p>
+    </div>
+
+    <script src="../js/index.js"></script>
 </body>
+
 </html>

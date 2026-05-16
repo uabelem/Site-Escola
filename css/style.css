@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* =========================================
    VARIÁVEIS DE TEMA
    ========================================= */
@@ -32,10 +34,11 @@ html {
     max-width: 100%;
     overscroll-behavior: none; 
     background-color: #1374F2; 
+    
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     margin: 0;
     background:
         var(--gradiente),
@@ -47,6 +50,7 @@ body {
     display: flex;
     flex-direction: column;
     overscroll-behavior: none; 
+    background-attachment: fixed;
 }
 
 /* =========================================
@@ -99,7 +103,7 @@ body {
 .navPC {
     background-color: #1374F2;
     display: flex;
-    width: min(1000px, calc(100% - clamp(24px, 5vw, 40px)));
+    width: fit-content;
     height: clamp(40px, 5vw, 50px);
     position: relative;
     left: 50%;
@@ -107,18 +111,25 @@ body {
     border-radius: 40px;
     align-items: center;
     justify-content: center;
-    padding: 0 5px;
+    padding: 0 16px;
     z-index: 10;
     margin-bottom: -25px;
     top: 10px;
+    overflow: hidden; /* <- adiciona isso */
 }
 
 .nav-links {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: center; /* <- era center */
     align-items: center;
     gap: 2px;
+    width: 100%; /* <- adiciona isso */
+    padding: 0 4px;
+}
+
+.nav-links .switch{
+    margin-left: 8px;
 }
 
 .pags {
@@ -166,6 +177,7 @@ body {
   display: inline-block;
   width: 3.5em;
   height: 2em;
+  flex-shrink: 0;
 }
 
 .switch input {
