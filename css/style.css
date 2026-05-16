@@ -231,7 +231,7 @@ input:checked + .slider:before {
    NAVEGAÇÃO MOBILE
    ========================================= */
 .hamburguer-nav {
-    position: fixed;
+    position: absolute;
     right: 0;
     top: clamp(55px, 10vw, 85px);
     width: clamp(140px, 35vw, 170px); 

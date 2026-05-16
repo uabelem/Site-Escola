@@ -6,8 +6,8 @@
     --bg-card-hover: #f2f2f2;
     --text-card: rgba(0, 0, 0, 0.577);
     --text-titulo: #222;
-    --gradiente: linear-gradient(to right, rgb(255,255,255), transparent),
-                 linear-gradient(to top, rgb(255,255,255), transparent);
+    --gradiente: linear-gradient(to right, rgb(255, 255, 255), transparent),
+        linear-gradient(to top, rgb(255, 255, 255), transparent);
 }
 
 body.dark {
@@ -15,14 +15,16 @@ body.dark {
     --bg-card-hover: #2a2a2a;
     --text-card: rgba(255, 255, 255, 0.7);
     --text-titulo: #f0f0f0;
-    --gradiente: linear-gradient(to right, rgb(20,20,20), transparent),
-                 linear-gradient(to top, rgb(20,20,20), transparent);
+    --gradiente: linear-gradient(to right, rgb(20, 20, 20), transparent),
+        linear-gradient(to top, rgb(20, 20, 20), transparent);
 }
 
 /* =========================================
    BASE
    ========================================= */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -67,7 +69,7 @@ body {
     flex-shrink: 0;
 }
 
-#header-interno > div {
+#header-interno>div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -161,53 +163,53 @@ body {
    SWITCH (TEMA CLARO/ESCURO)
    ========================================= */
 .switch {
-  font-size: 17px;
-  position: relative;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
 }
 
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  --background: #1e62d0;
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--background);
-  transition: .5s;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+    --background: #1e62d0;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    transition: .5s;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 1.4em;
-  width: 1.4em;
-  border-radius: 50%;
-  left: 10%;
-  bottom: 15%;
-  box-shadow: inset 8px -4px 0px 0px #ffffff;
-  background: var(--background);
-  transition: .5s;
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    left: 10%;
+    bottom: 15%;
+    box-shadow: inset 8px -4px 0px 0px #ffffff;
+    background: var(--background);
+    transition: .5s;
 }
 
-input:checked + .slider {
-  background-color: #0044cc;
+input:checked+.slider {
+    background-color: #0044cc;
 }
 
-input:checked + .slider:before {
-  transform: translateX(100%);
-  box-shadow: inset 15px -4px 0px 15px #ffffff;
+input:checked+.slider:before {
+    transform: translateX(100%);
+    box-shadow: inset 15px -4px 0px 15px #ffffff;
 }
 
 /* =========================================
@@ -231,7 +233,7 @@ input:checked + .slider:before {
    NAVEGAÇÃO MOBILE
    ========================================= */
 .hamburguer-nav {
-    position: fixed;
+    position: absolute;
     right: 0;
     top: clamp(55px, 10vw, 85px);
     width: clamp(140px, 35vw, 170px);
@@ -246,7 +248,7 @@ input:checked + .slider:before {
     transition: right 0.5s ease-in-out;
 }
 
-.hamburguer-nav > div {
+.hamburguer-nav>div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -296,16 +298,37 @@ main {
     align-items: center;
 }
 
-#primeira-noti{
-    margin-top: 60px;
+#noticias-container {
+    align-items: center;
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.205);
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+#noticias-container>h1 {
+    margin-top: 60px auto 20px auto;
+    color: var(--text-titulo);
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    margin-bottom: 0px;
+}
+
+#primeira-noti {
+    margin-top: 0px;
 }
 
 .noticia {
-    background-color: var(--bg-card);
+    background: var(--bg-card);
     margin: 1em auto 1em auto;
     border-radius: 12px;
     width: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.205);
+    box-shadow: 0 4px 8px var(--text-card);
     transition: background-color 0.3s ease;
     display: flex;
     gap: 20px;
@@ -313,7 +336,7 @@ main {
     max-height: 24.5em;
 }
 
-.noticia>div>img{
+.noticia>div>img {
     width: 20em;
 }
 
@@ -321,7 +344,7 @@ main {
 .artigos {
     color: var(--text-card);
     background-color: var(--bg-card);
-    margin: 20px auto;
+    margin: 0 auto 20px auto;
     border-radius: 12px;
     width: min(1000px, calc(100% - 40px));
     transition: background-color 0.3s ease;
@@ -348,6 +371,39 @@ main {
     box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
 }
 
+@media (max-width: 600px) {
+
+    #noticias-container>h1 {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+        text-align: center;
+       
+    }
+    .noticia {
+        flex-direction: column;
+        max-height: none;
+        text-align: center;
+    }
+
+    .noticia>div>img {
+        width: 100%;
+        height: auto;
+    }
+
+    .artigos {
+        padding-top: 0px;
+        max-width: none;
+    }
+
+    .artigos>h2 {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        margin-top: 0;
+    }
+
+    .btn-ver-mais {
+        padding: clamp(6px, 2vw, 10px) clamp(8px, 3vw, 16px);
+    }
+}
+
 /* =========================================
    RODAPÉ
    ========================================= */
@@ -360,13 +416,13 @@ main {
     align-items: center;
 }
 
-#rodape > p:nth-child(1) {
+#rodape>p:nth-child(1) {
     margin: 0;
     color: white;
     font-size: clamp(0.75rem, 1.5vw, 0.95rem);
 }
 
-#rodape > p:nth-child(2) {
+#rodape>p:nth-child(2) {
     margin: 0;
     color: white;
     font-size: clamp(0.70rem, 1.2vw, 0.75rem);
@@ -375,31 +431,80 @@ main {
 /* =========================================
    ANIMAÇÕES
    ========================================= */
-#caixa { transition: 1s ease; }
-#sect-caixa:hover #caixa { animation: shakeY 0.7s ease-in-out; }
-#sect-semi:hover #semi   { animation: shake 0.5s ease-in-out; }
-#sect-ball:hover #ball   { animation: rodar 0.7s ease-in-out; }
+#caixa {
+    transition: 1s ease;
+}
+
+#sect-caixa:hover #caixa {
+    animation: shakeY 0.7s ease-in-out;
+}
+
+#sect-semi:hover #semi {
+    animation: shake 0.5s ease-in-out;
+}
+
+#sect-ball:hover #ball {
+    animation: rodar 0.7s ease-in-out;
+}
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%       { transform: translateX(-8px); }
-    40%       { transform: translateX(8px); }
-    60%       { transform: translateX(-5px); }
-    80%       { transform: translateX(5px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
 }
 
 @keyframes shakeY {
-    0%   { rotate: -10deg; }
-    20%  { rotate: 10deg; }
-    40%  { rotate: -10deg; }
-    60%  { rotate: 10deg; }
-    80%  { rotate: -10deg; }
-    100% { rotate: 0deg; }
+    0% {
+        rotate: -10deg;
+    }
+
+    20% {
+        rotate: 10deg;
+    }
+
+    40% {
+        rotate: -10deg;
+    }
+
+    60% {
+        rotate: 10deg;
+    }
+
+    80% {
+        rotate: -10deg;
+    }
+
+    100% {
+        rotate: 0deg;
+    }
 }
 
 @keyframes rodar {
-    from { rotate: 0deg; }
-    to   { rotate: 180deg; }
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 180deg;
+    }
 }
 
 /* =========================================
@@ -412,10 +517,15 @@ main {
 }
 
 @media (max-width: 1092px) {
-    .navPC { display: none; }
-    .buttonHAM { display: flex; }
+    .navPC {
+        display: none;
+    }
 
-    #header-interno > div {
+    .buttonHAM {
+        display: flex;
+    }
+
+    #header-interno>div {
         display: none;
     }
 
@@ -442,10 +552,17 @@ main {
 }
 
 @media (max-width: 500px) {
-    .hamburguer-nav { top: clamp(60px, 18vw, 90px); }
+    .hamburguer-nav {
+        top: clamp(60px, 18vw, 90px);
+    }
 }
 
 @media (max-width: 360px) {
-    #header-interno h1 { font-size: clamp(0.75rem, 4.5vw, 0.9rem); }
-    #header-interno p  { font-size: clamp(0.6rem, 3.5vw, 0.7rem); }
+    #header-interno h1 {
+        font-size: clamp(0.75rem, 4.5vw, 0.9rem);
+    }
+
+    #header-interno p {
+        font-size: clamp(0.6rem, 3.5vw, 0.7rem);
+    }
 }
