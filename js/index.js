@@ -39,6 +39,10 @@ buttonHAM.addEventListener("click", () => {
     }
 });
 
+window.addEventListener("resize", () => {
+    fecharMenu();
+});
+
 /* =========================================
    DARK MODE LOGIC
    ========================================= */

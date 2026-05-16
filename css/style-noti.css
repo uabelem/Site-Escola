@@ -39,8 +39,7 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background:
-        var(--gradiente);
+    background: var(--gradiente);
     background-position: center 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -312,6 +311,27 @@ main {
     backdrop-filter: blur(10px);
 }
 
+abbr {
+    text-decoration: none;
+    color:#135EF2;
+    cursor: help;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    border-bottom: #1168d9 dashed 1px;
+    border-left: #1168d9 dashed 1px;
+    padding: 0 2px;
+    background-color: #1374f21a;
+}
+
+abbr:hover {
+    opacity: 1;
+}
+
+strong {
+    color: #135EF2;
+    padding: 0 2px;
+}
+
 #noticias-container>h1 {
     margin-top: 60px auto 20px auto;
     color: var(--text-titulo);
@@ -334,6 +354,7 @@ main {
     gap: 20px;
     overflow: hidden;
     max-height: 24.5em;
+    transition: 0.5s ease;
 }
 
 .noticia>div>img {
@@ -343,7 +364,6 @@ main {
 
 .artigos {
     color: var(--text-card);
-    background-color: var(--bg-card);
     margin: 0 auto 20px auto;
     border-radius: 12px;
     width: min(1000px, calc(100% - 40px));
@@ -371,13 +391,23 @@ main {
     box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
 }
 
+.noticia:hover{
+    background-color: var(--bg-card-hover);
+    scale: 1.01;
+}
+
+
 @media (max-width: 600px) {
 
     #noticias-container>h1 {
         font-size: clamp(1.2rem, 4vw, 1.8rem);
         text-align: center;
-       
+        background-color: var(--bg-card);
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px var(--text-card);
     }
+
     .noticia {
         flex-direction: column;
         max-height: none;
