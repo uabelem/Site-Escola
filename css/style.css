@@ -318,17 +318,6 @@ main {
     height: 400px;
 }
 
-#painel-img {
-    position: relative;
-    width: 100%;
-    display: block;
-}
-
-#painel-img img {
-    width: 100%;
-    display: block;
-}
-
 .painel-texto-button {
     display: flex;
     flex-direction: column;
@@ -445,7 +434,7 @@ body.dark .principal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     min-width: clamp(80px, 10vw, 110px);
 }
 
@@ -483,8 +472,8 @@ body.dark .principal {
 
 .principal a {
     position: absolute;
-    bottom: 16px;
-    right: 20px;
+    bottom: 7px;
+    right: 10px;
     font-size: clamp(0.8rem, 1vw, 0.95rem);
     font-weight: bold;
     text-decoration: none;
@@ -533,6 +522,7 @@ body.dark .principal {
 #sect-caixa:hover #caixa { animation: shakeY 0.7s ease-in-out; }
 #sect-semi:hover #semi   { animation: shake 0.5s ease-in-out; }
 #sect-ball:hover #ball   { animation: rodar 0.7s ease-in-out; }
+#sect-enem:hover #enem {animation: shakeup 0.5s ease-in-out}
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -540,6 +530,13 @@ body.dark .principal {
     40%       { transform: translateX(8px); }
     60%       { transform: translateX(-5px); }
     80%       { transform: translateX(5px); }
+}
+@keyframes shakeup {
+    0%, 100% { transform: translateY(0); }
+    20%       { transform: translateY(-8px); }
+    40%       { transform: translateY(8px); }
+    60%       { transform: translateY(-5px); }
+    80%       { transform: translateY(5px); }
 }
 
 @keyframes shakeY {
@@ -593,7 +590,7 @@ body.dark .principal {
     #painel {
         text-align: center;
         z-index: 0;
-        height: clamp(260px, 35vh, 320px); 
+        height: clamp(160px, 5vh, 320px); 
     }
 
     #painel-texto {
@@ -612,7 +609,6 @@ body.dark .principal {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -653,7 +649,6 @@ body.dark .principal {
 
     #painel-texto h1 { font-size: clamp(1.5rem, 6vw, 1.8rem); }
     #painel-texto h2 { font-size: clamp(0.95rem, 4vw, 1.1rem); }
-
     #painel-botao { display: none; }
 
     #botao-mobile {
@@ -676,9 +671,15 @@ body.dark .principal {
         box-shadow: 0px 0px 15px rgba(55, 118, 255, 0.775);
     }
 
-    .principal p { font-size: clamp(0.75rem, 3.5vw, 0.85rem); }
+    .principal p { font-size: clamp(0.5rem, 2vw, 0.85rem); }
     .principal h2 { font-size: clamp(0.85rem, 4vw, 1rem); }
-    .principal a { font-size: clamp(0.75rem, 3.5vw, 0.85rem); }
+    .principal a { font-size: clamp(0.5rem, 3vw, 0.85rem); }
+    .principal {
+        height: 90px;
+        padding-top: 5px;
+        padding-left: 10px;
+    }
+
 }
 
 @media (max-width: 360px) {
