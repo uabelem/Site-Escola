@@ -37,20 +37,33 @@ html {
     
 }
 
+/*
+ * FIX iOS: background-attachment: fixed não funciona corretamente
+ * no Safari/iOS — a imagem "pula" quando o layout muda (ex: menu abre).
+ * Solução: remover o background da body e usar um pseudo-elemento ::before
+ * com position: fixed, que se comporta corretamente em todos os browsers.
+ */
 body {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none;
+    position: relative; /* necessário para o ::before funcionar */
+}
+
+body::before {
+    content: '';
+    position: fixed; /* fica fixo na viewport, não rola com o conteúdo */
+    inset: 0;        /* cobre tudo: top/right/bottom/left = 0 */
+    z-index: -1;     /* fica atrás de todo o conteúdo */
     background:
         var(--gradiente),
         url(../img/alunoginafull.png);
     background-position: center 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overscroll-behavior: none; 
-    background-attachment: fixed;
 }
 
 /* =========================================
@@ -115,16 +128,16 @@ body {
     z-index: 10;
     margin-bottom: -25px;
     top: 10px;
-    overflow: hidden; /* <- adiciona isso */
+    overflow: hidden;
 }
 
 .nav-links {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center; /* <- era center */
+    justify-content: center;
     align-items: center;
     gap: 2px;
-    width: 100%; /* <- adiciona isso */
+    width: 100%;
     padding: 0 4px;
 }
 
