@@ -339,7 +339,7 @@ main {
 #painel-texto {
     position: absolute;
     left: clamp(16px, 4vw, 40px);
-    top: 25%;
+    top: 15%;
     display: flex;
     flex-direction: column;
     gap: clamp(6px, 1vw, 10px);
@@ -365,7 +365,7 @@ main {
 
 #painel-botao {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: clamp(16px, 4vw, 40px);
 }
 
